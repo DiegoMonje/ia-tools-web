@@ -1,0 +1,44 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import ArticleCard from '../components/ArticleCard.astro';
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('blog');
+const comparisonPosts = posts
+  .filter((post) => {
+    const text = `${post.data.title} ${post.data.description} ${post.data.tags.join(' ')}`.toLowerCase();
+    return text.includes(' vs ') || text.includes('comparativa') || text.includes('comparar');
+  })
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<Layout
+  title="Comparativas de herramientas IA - IA Tools Hub"
+  description="Comparativas prácticas de herramientas de inteligencia artificial para ayudarte a elegir la mejor opción según tu caso de uso."
+>
+  <Header />
+
+  <main class="py-12 bg-hub-bg">
+    <div class="max-w-5xl mx-auto px-6">
+      <header class="mb-10">
+        <h1 class="text-3xl font-bold text-hub-dark mb-3">Comparativas de herramientas IA</h1>
+        <p class="text-hub-slate text-lg max-w-3xl">
+          Analizamos alternativas, ventajas, límites y casos de uso para ayudarte a elegir con más criterio.
+        </p>
+      </header>
+
+      {comparisonPosts.length > 0 ? (
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {comparisonPosts.map((post) => (
+            <ArticleCard post={post} />
+          ))}
+        </div>
+      ) : (
+        <div class="bg-hub-white border border-hub-grayLighter rounded-lg p-8">
+          <p class="text-hub-slate">Todavía no hay comparativas publicadas. Puedes ver todos los artículos en <a href="/blog" class="text-hub-accent hover:underline">Herramientas IA</a>.</p>
+        </div>
+      )}
+    </div>
+  </main>
+</Layout>
