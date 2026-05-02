@@ -1,0 +1,123 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+
+const workflows = [
+  {
+    title: 'Resumir y organizar información',
+    description: 'Convierte reuniones, documentos, emails y notas largas en resúmenes claros, decisiones y próximas acciones.',
+  },
+  {
+    title: 'Planificar tareas y proyectos',
+    description: 'Crea listas de tareas, calendarios editoriales, planes semanales y prioridades con ayuda de IA.',
+  },
+  {
+    title: 'Automatizar procesos repetitivos',
+    description: 'Conecta formularios, hojas de cálculo, emails, CRM y herramientas internas con n8n, Zapier o Make.',
+  },
+  {
+    title: 'Crear documentos más rápido',
+    description: 'Genera borradores de propuestas, informes, guías, procedimientos, emails y plantillas reutilizables.',
+  },
+];
+
+const tools = [
+  { name: 'ChatGPT o Claude', use: 'Redacción, análisis, resumen, planificación y resolución de tareas diarias' },
+  { name: 'Notion AI', use: 'Documentación, notas, bases de conocimiento y organización de proyectos' },
+  { name: 'n8n', use: 'Automatizaciones flexibles entre herramientas, APIs y bases de datos' },
+  { name: 'Zapier o Make', use: 'Automatización no-code para procesos sencillos y repetitivos' },
+  { name: 'Perplexity', use: 'Investigación rápida, búsqueda de información y recopilación de fuentes' },
+];
+
+const routine = [
+  'Empieza el día pidiendo a la IA que ordene tus prioridades.',
+  'Usa plantillas de prompts para emails, informes y propuestas frecuentes.',
+  'Resume documentos largos antes de leerlos completos.',
+  'Convierte reuniones en tareas concretas con responsables y fechas.',
+  'Automatiza solo procesos que ya entiendes manualmente.',
+];
+---
+
+<Layout
+  title="IA para productividad: herramientas y flujos para ahorrar tiempo"
+  description="Guía práctica de IA para productividad: herramientas, flujos de trabajo y automatizaciones para organizar tareas, resumir información y trabajar mejor."
+>
+  <Header />
+
+  <main>
+    <section class="bg-hub-bg border-b border-hub-grayLighter py-16">
+      <div class="max-w-5xl mx-auto px-6">
+        <span class="inline-block text-sm font-semibold uppercase tracking-wider text-hub-accent mb-4">Productividad con IA</span>
+        <h1 class="text-4xl md:text-5xl font-bold text-hub-dark mb-5 leading-tight">
+          IA para productividad: herramientas y flujos para ahorrar tiempo
+        </h1>
+        <p class="text-lg text-hub-slate max-w-3xl leading-relaxed">
+          La IA puede ayudarte a organizar mejor tu trabajo, reducir tareas repetitivas, resumir información, crear documentos y automatizar procesos. La clave está en aplicarla a flujos concretos, no en acumular herramientas.
+        </p>
+      </div>
+    </section>
+
+    <section class="py-14 bg-hub-white">
+      <div class="max-w-5xl mx-auto px-6">
+        <div class="max-w-3xl mb-8">
+          <h2 class="text-2xl md:text-3xl font-bold text-hub-dark mb-3">Flujos de productividad con IA</h2>
+          <p class="text-hub-slate leading-relaxed">
+            Estos son los casos de uso más rentables para empezar: tareas que se repiten, consumen tiempo y pueden estandarizarse con instrucciones claras.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-5">
+          {workflows.map((workflow) => (
+            <div class="border border-hub-grayLighter rounded-xl p-6 bg-hub-bg">
+              <h3 class="text-xl font-bold text-hub-dark mb-2">{workflow.title}</h3>
+              <p class="text-sm text-hub-slate leading-relaxed">{workflow.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="py-14 bg-hub-bg">
+      <div class="max-w-5xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-start">
+        <div>
+          <h2 class="text-2xl md:text-3xl font-bold text-hub-dark mb-4">Herramientas recomendadas</h2>
+          <p class="text-hub-slate leading-relaxed mb-6">
+            Puedes empezar con una herramienta de conversación, una herramienta para organizar conocimiento y una herramienta de automatización. Con eso ya puedes mejorar gran parte de tu flujo diario.
+          </p>
+          <a href="/categoria/productividad" class="inline-flex items-center px-5 py-3 bg-hub-accent text-white font-medium rounded-lg hover:bg-hub-accentLight transition-colors">
+            Ver categoría productividad →
+          </a>
+        </div>
+
+        <div class="space-y-3">
+          {tools.map((item) => (
+            <div class="bg-hub-white border border-hub-grayLighter rounded-lg p-4">
+              <h3 class="font-bold text-hub-dark">{item.name}</h3>
+              <p class="text-sm text-hub-slate mt-1">{item.use}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="py-14 bg-hub-white">
+      <div class="max-w-5xl mx-auto px-6">
+        <div class="grid md:grid-cols-2 gap-10 items-start">
+          <div>
+            <h2 class="text-2xl md:text-3xl font-bold text-hub-dark mb-4">Rutina práctica para trabajar mejor</h2>
+            <p class="text-hub-slate leading-relaxed">
+              La productividad con IA mejora cuando conviertes buenos hábitos en plantillas repetibles. Empieza con un flujo pequeño y mejóralo cada semana.
+            </p>
+          </div>
+          <div class="space-y-3">
+            {routine.map((item) => (
+              <div class="border border-hub-grayLighter rounded-lg p-4 text-sm text-hub-slate leading-relaxed">
+                {item}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
