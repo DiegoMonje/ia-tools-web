@@ -33,6 +33,33 @@ const topTools = [
   { title: 'GitHub Copilot', category: 'Código', description: 'El favorito de desarrolladores', href: '/blog/github-copilot-vs-cursor-vs-claude-code', rating: '4.6' },
 ];
 
+const seoCategories = [
+  {
+    title: 'Herramientas de IA gratis',
+    href: '/herramientas-ia-gratis',
+    keyword: 'IA gratis',
+    description: 'Selección de herramientas gratuitas para escribir, crear imágenes, resumir textos, programar y automatizar tareas sin empezar pagando.'
+  },
+  {
+    title: 'IA para negocios',
+    href: '/ia-para-negocios',
+    keyword: 'IA empresarial',
+    description: 'Recursos para autónomos, pymes y empresas que quieren ahorrar tiempo, captar clientes y mejorar procesos usando inteligencia artificial.'
+  },
+  {
+    title: 'IA para ganar dinero',
+    href: '/ia-para-ganar-dinero',
+    keyword: 'monetización con IA',
+    description: 'Ideas prácticas para usar herramientas de IA en contenidos, afiliación, automatizaciones, servicios digitales y proyectos online.'
+  },
+  {
+    title: 'IA para productividad',
+    href: '/categoria/productividad',
+    keyword: 'productividad con IA',
+    description: 'Apps y flujos de trabajo para organizar tareas, resumir información, crear documentos y trabajar más rápido cada día.'
+  },
+];
+
 const comparisonTools = [
   { title: 'Claude 4 vs ChatGPT 5', category: 'Comparativa', href: '/blog/claude-4-vs-chatgpt-5', badge: 'Popular' },
   { title: 'Midjourney vs DALL-E 4', category: 'Comparativa', href: '/blog/midjourney-vs-dalle', badge: 'Mejor reviewed' },
@@ -41,7 +68,10 @@ const comparisonTools = [
 ];
 ---
 
-<Layout title="IA Tools Hub - Descubre las Mejores Herramientas de IA">
+<Layout
+  title="Mejores herramientas de IA 2026: guías, rankings y comparativas"
+  description="Descubre las mejores herramientas de inteligencia artificial para trabajar, crear contenido, automatizar tareas, programar y mejorar tu productividad. Comparativas, guías y análisis prácticos."
+>
   <Header />
   
   <main>
@@ -89,9 +119,45 @@ const comparisonTools = [
         <CategoryHubCard categories={categories} />
       </div>
     </section>
+
+    <!-- SEO Landing Pages Section -->
+    <section class="py-14 bg-hub-white">
+      <div class="max-w-5xl mx-auto px-6">
+        <div class="max-w-3xl mb-8">
+          <span class="text-sm font-semibold uppercase tracking-wider text-hub-accent">Guías estratégicas</span>
+          <h2 class="text-2xl md:text-3xl font-bold text-hub-dark mt-2 mb-3">
+            Herramientas de IA por objetivo
+          </h2>
+          <p class="text-hub-slate leading-relaxed">
+            No todas las herramientas sirven para lo mismo. Empieza por el objetivo que quieres conseguir y encuentra guías pensadas para elegir rápido, ahorrar tiempo y aplicar IA con sentido práctico.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-5">
+          {seoCategories.map((item) => (
+            <a href={item.href} class="group block bg-hub-bg border border-hub-grayLighter hover:border-hub-accent rounded-xl p-6 transition-colors">
+              <div class="flex items-start justify-between gap-4 mb-3">
+                <div>
+                  <span class="inline-block text-xs font-semibold uppercase tracking-wider text-hub-accent mb-2">
+                    {item.keyword}
+                  </span>
+                  <h3 class="text-xl font-bold text-hub-dark group-hover:text-hub-accent transition-colors">
+                    {item.title}
+                  </h3>
+                </div>
+                <span class="text-hub-accent text-xl">→</span>
+              </div>
+              <p class="text-sm text-hub-slate leading-relaxed">
+                {item.description}
+              </p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
     
     <!-- Rankings Section -->
-    <section class="py-12 bg-hub-white">
+    <section class="py-12 bg-hub-bg">
       <div class="max-w-5xl mx-auto px-6">
         <h2 class="text-2xl font-bold text-hub-dark mb-8">Top Herramientas IA</h2>
         
@@ -110,7 +176,7 @@ const comparisonTools = [
     </section>
     
     <!-- Latest Articles Section -->
-    <section class="py-12 bg-hub-bg">
+    <section class="py-12 bg-hub-white">
       <div class="max-w-5xl mx-auto px-6">
         <div class="flex items-center justify-between mb-8">
           <h2 class="text-2xl font-bold text-hub-dark">Últimos Artículos</h2>
