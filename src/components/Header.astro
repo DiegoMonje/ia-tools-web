@@ -2,17 +2,10 @@
 const navLinks = [
   { href: '/', label: 'Inicio' },
   { href: '/blog', label: 'Herramientas IA' },
-  { href: '/blog', label: 'Comparativas' },
-  { href: '/blog', label: 'Guías' },
+  { href: '/comparativas', label: 'Comparativas' },
+  { href: '/guias', label: 'Guías' },
   { href: '/sobre-nosotros', label: 'Sobre nosotros' },
   { href: '/contacto', label: 'Contacto' },
-];
-
-const categories = [
-  { name: 'Chatbots IA', slug: 'ia-de-texto' },
-  { name: 'Imágenes', slug: 'ia-de-imagen' },
-  { name: 'Video', slug: 'ia-de-video' },
-  { name: 'Código', slug: 'ia-de-codigo' },
 ];
 ---
 
@@ -24,8 +17,8 @@ const categories = [
         <span class="text-hub-accent">Hub</span>
       </a>
       
-      <button id="navToggle" class="nav-toggle md:hidden p-2" aria-label="Abrir menú">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <button id="navToggle" class="nav-toggle md:hidden p-2" aria-label="Abrir menú" aria-controls="navMenu" aria-expanded="false">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
         </svg>
       </button>
@@ -67,8 +60,9 @@ const categories = [
   
   if (toggle && menu) {
     toggle.addEventListener('click', () => {
-      menu.classList.toggle('open');
-      menu.classList.toggle('hidden');
+      const isOpen = menu.classList.toggle('open');
+      menu.classList.toggle('hidden', !isOpen);
+      toggle.setAttribute('aria-expanded', String(isOpen));
     });
   }
 </script>
