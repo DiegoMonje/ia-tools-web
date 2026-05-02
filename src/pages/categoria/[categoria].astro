@@ -3,43 +3,39 @@ import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import ArticleCard from '../../components/ArticleCard.astro';
 import { getCollection } from 'astro:content';
+import { slugify } from '../../utils/slugify';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
+  const categories = [...new Set(posts.map((post) => post.data.category))];
   
-  const categories = [...new Set(posts.map(post => post.data.category))];
-  
-  return categories.map(category => ({
-    params: { categoria: category.toLowerCase().replace(/ /g, '-').replace(/[áéíóú]/g, c => 'aeiou'.replace(c, '')) },
+  return categories.map((category) => ({
+    params: { categoria: slugify(category) },
     props: { 
       category,
-      posts: posts.filter(post => post.data.category === category)
-        .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-    }
+      posts: posts
+        .filter((post) => post.data.category === category)
+        .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()),
+    },
   }));
 }
 
 const { category, posts } = Astro.props;
 
 const categoryDescriptions: Record<string, string> = {
-  'IA de Texto': 'Las mejores herramientas de IA para escribir, analizar y crear contenido textual.',
-  'IA de Imagen': 'Generadores de imágenes con inteligencia artificial.',
-  'IA de Video': 'Crea y edita videos con IA.',
-  'IA de Audio': 'Síntesis de voz y generación de audio con IA.',
-  'IA de Código': 'Asistentes de programación y desarrollo.',
-  'Productividad': 'Herramientas para aumentar tu productividad con IA.',
+  'IA de Texto': 'Herramientas de IA para escribir, resumir, analizar y crear contenido textual.',
+  'IA de Imagen': 'Generadores de imágenes con inteligencia artificial y recursos visuales.',
+  'IA de Video': 'Herramientas para crear, editar y optimizar videos con IA.',
+  'IA de Audio': 'Síntesis de voz, transcripción y generación de audio con IA.',
+  'IA de Código': 'Asistentes de programación, desarrollo y revisión de código.',
+  Productividad: 'Herramientas para organizar tareas, automatizar procesos y trabajar mejor con IA.',
 };
 
 const description = categoryDescriptions[category] || `Artículos sobre ${category}`;
 
-const allCategories = [
-  { name: 'Chatbots IA', slug: 'ia-de-texto' },
-  { name: 'Imágenes', slug: 'ia-de-imagen' },
-  { name: 'Video', slug: 'ia-de-video' },
-  { name: 'Audio', slug: 'ia-de-audio' },
-  { name: 'Código', slug: 'ia-de-codigo' },
-  { name: 'Productividad', slug: 'productividad' },
-];
+const allCategories = [...new Set(posts.map((post) => post.data.category))]
+  .map((name) => ({ name, slug: slugify(name) }))
+  .sort((a, b) => a.name.localeCompare(b.name, 'es'));
 ---
 
 <Layout title={`${category} - IA Tools Hub`} description={description}>
@@ -47,8 +43,7 @@ const allCategories = [
   
   <main class="py-12 bg-hub-bg">
     <div class="max-w-5xl mx-auto px-6">
-      <!-- Breadcrumb -->
-      <nav class="flex items-center gap-2 text-sm text-hub-gray mb-8">
+      <nav class="flex items-center gap-2 text-sm text-hub-gray mb-8" aria-label="Migas de pan">
         <a href="/" class="hover:text-hub-accent transition-colors">Inicio</a>
         <span class="text-hub-grayLighter">/</span>
         <a href="/blog" class="hover:text-hub-accent transition-colors">Herramientas IA</a>
@@ -56,13 +51,11 @@ const allCategories = [
         <span class="text-hub-dark">{category}</span>
       </nav>
 
-      <!-- Header -->
       <header class="mb-10">
         <h1 class="text-3xl font-bold text-hub-dark mb-3">{category}</h1>
         <p class="text-hub-slate text-lg">{description}</p>
       </header>
 
-      <!-- Articles -->
       <section class="mb-16">
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {posts.map((post) => (
@@ -71,9 +64,8 @@ const allCategories = [
         </div>
       </section>
 
-      <!-- Other Categories -->
       <section class="pt-12 border-t border-hub-grayLighter">
-        <h2 class="text-xl font-bold text-hub-dark mb-6">Otras Categorías</h2>
+        <h2 class="text-xl font-bold text-hub-dark mb-6">Otras categorías</h2>
         <div class="flex flex-wrap gap-3">
           {allCategories.map((cat) => (
             <a href={`/categoria/${cat.slug}`} class="px-4 py-2 bg-hub-white border border-hub-grayLighter hover:border-hub-accent hover:text-hub-accent transition-colors rounded-full text-sm font-medium text-hub-slate">
