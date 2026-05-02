@@ -27,12 +27,14 @@ const {
 <section class="hub-hero bg-hub-bg py-16 md:py-20 border-b border-hub-grayLighter">
   <div class="max-w-5xl mx-auto px-6">
     <div class="text-center mb-10">
-      <h1 class="text-4xl md:text-5xl font-bold text-hub-dark mb-4">
-        Descubre las Mejores Herramientas de IA
+      <span class="inline-flex items-center px-4 py-2 mb-5 text-sm font-semibold text-hub-accent bg-hub-white border border-hub-grayLighter rounded-full shadow-sm">
+        Guías, rankings y comparativas actualizadas de IA
+      </span>
+      <h1 class="text-4xl md:text-5xl font-bold text-hub-dark mb-4 leading-tight">
+        Las mejores herramientas de inteligencia artificial para trabajar, crear y automatizar
       </h1>
-      <p class="text-lg text-hub-slate max-w-2xl mx-auto">
-        Compara, aprende y elige la mejor inteligencia artificial para tu caso de uso. 
-        Guías, comparativas y análisis detallados.
+      <p class="text-lg text-hub-slate max-w-3xl mx-auto">
+        Encuentra la IA adecuada para escribir mejor, crear imágenes, programar, automatizar tareas y mejorar tu productividad. Analizamos herramientas, precios, ventajas, límites y casos de uso reales.
       </p>
     </div>
 
@@ -43,7 +45,7 @@ const {
           <input 
             type="text" 
             name="q"
-            placeholder="Buscar herramientas, guías o comparativas..."
+            placeholder="Buscar ChatGPT, Claude, Midjourney, automatización..."
             class="w-full px-5 py-4 pl-12 bg-hub-white border border-hub-grayLighter focus:border-hub-accent focus:outline-none transition-colors text-hub-dark text-lg rounded-lg shadow-sm"
           />
           <svg class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-hub-gray" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -57,6 +59,22 @@ const {
           </button>
         </div>
       </form>
+    </div>
+
+    <!-- Trust Highlights -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto mb-10 text-center">
+      <div class="bg-hub-white border border-hub-grayLighter rounded-xl p-4 shadow-sm">
+        <p class="text-2xl font-bold text-hub-dark">+40</p>
+        <p class="text-sm text-hub-slate">herramientas analizadas</p>
+      </div>
+      <div class="bg-hub-white border border-hub-grayLighter rounded-xl p-4 shadow-sm">
+        <p class="text-2xl font-bold text-hub-dark">2026</p>
+        <p class="text-sm text-hub-slate">comparativas actualizadas</p>
+      </div>
+      <div class="bg-hub-white border border-hub-grayLighter rounded-xl p-4 shadow-sm">
+        <p class="text-2xl font-bold text-hub-dark">100%</p>
+        <p class="text-sm text-hub-slate">enfoque práctico</p>
+      </div>
     </div>
 
     <!-- Category Shortcuts -->
