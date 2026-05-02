@@ -1,0 +1,141 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+
+const tools = [
+  {
+    name: 'ChatGPT',
+    category: 'Texto y productividad',
+    freePlan: 'Sí, con límites',
+    bestFor: 'Escribir, resumir, generar ideas y resolver dudas del día a día',
+    href: '/blog/chatgpt-5-guia-completa'
+  },
+  {
+    name: 'Claude',
+    category: 'Análisis y escritura',
+    freePlan: 'Sí, con límites',
+    bestFor: 'Analizar textos largos, redactar mejor y trabajar con documentos',
+    href: '/blog/claude-4-vs-chatgpt-5'
+  },
+  {
+    name: 'Perplexity',
+    category: 'Búsqueda con IA',
+    freePlan: 'Sí',
+    bestFor: 'Investigar temas, encontrar fuentes y resumir información online',
+    href: '/blog'
+  },
+  {
+    name: 'Canva IA',
+    category: 'Diseño',
+    freePlan: 'Sí, con funciones limitadas',
+    bestFor: 'Crear diseños, presentaciones, miniaturas y contenido visual rápido',
+    href: '/blog'
+  },
+  {
+    name: 'GitHub Copilot',
+    category: 'Programación',
+    freePlan: 'Depende del perfil',
+    bestFor: 'Ayudar a programar, completar código y acelerar proyectos técnicos',
+    href: '/blog/github-copilot-vs-cursor-vs-claude-code'
+  },
+];
+
+const useCases = [
+  'Crear artículos, emails, anuncios y publicaciones para redes sociales',
+  'Resumir documentos, vídeos, clases, PDFs o reuniones',
+  'Generar ideas de negocio, productos digitales o contenido SEO',
+  'Diseñar imágenes, banners, presentaciones y material visual',
+  'Automatizar tareas repetitivas y mejorar la productividad personal',
+];
+---
+
+<Layout
+  title="Mejores herramientas de IA gratis en 2026: lista práctica"
+  description="Descubre las mejores herramientas de IA gratis para escribir, crear imágenes, resumir textos, programar, estudiar y mejorar tu productividad sin empezar pagando."
+>
+  <Header />
+
+  <main>
+    <section class="bg-hub-bg border-b border-hub-grayLighter py-16">
+      <div class="max-w-5xl mx-auto px-6">
+        <span class="inline-block text-sm font-semibold uppercase tracking-wider text-hub-accent mb-4">IA gratis</span>
+        <h1 class="text-4xl md:text-5xl font-bold text-hub-dark mb-5 leading-tight">
+          Mejores herramientas de IA gratis para empezar hoy
+        </h1>
+        <p class="text-lg text-hub-slate max-w-3xl leading-relaxed">
+          Una selección práctica de herramientas de inteligencia artificial que puedes probar sin pagar desde el primer día. Ideales para escribir mejor, investigar, crear contenido, diseñar, programar y automatizar tareas.
+        </p>
+      </div>
+    </section>
+
+    <section class="py-14 bg-hub-white">
+      <div class="max-w-5xl mx-auto px-6">
+        <div class="max-w-3xl mb-8">
+          <h2 class="text-2xl md:text-3xl font-bold text-hub-dark mb-3">Ranking rápido de IA gratis</h2>
+          <p class="text-hub-slate">
+            La mayoría de herramientas de IA funcionan con un modelo freemium: puedes empezar gratis, probar si te sirve y pagar solo cuando necesites más límites, funciones avanzadas o uso profesional.
+          </p>
+        </div>
+
+        <div class="overflow-hidden border border-hub-grayLighter rounded-xl">
+          <div class="grid grid-cols-1 md:grid-cols-5 bg-hub-bg text-sm font-semibold text-hub-dark">
+            <div class="p-4">Herramienta</div>
+            <div class="p-4">Categoría</div>
+            <div class="p-4">Plan gratis</div>
+            <div class="p-4 md:col-span-2">Mejor para</div>
+          </div>
+          {tools.map((tool) => (
+            <a href={tool.href} class="grid grid-cols-1 md:grid-cols-5 border-t border-hub-grayLighter hover:bg-hub-bg transition-colors text-sm">
+              <div class="p-4 font-semibold text-hub-dark">{tool.name}</div>
+              <div class="p-4 text-hub-slate">{tool.category}</div>
+              <div class="p-4 text-hub-slate">{tool.freePlan}</div>
+              <div class="p-4 md:col-span-2 text-hub-slate">{tool.bestFor}</div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="py-14 bg-hub-bg">
+      <div class="max-w-5xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-start">
+        <div>
+          <h2 class="text-2xl md:text-3xl font-bold text-hub-dark mb-4">Qué puedes hacer con IA gratis</h2>
+          <p class="text-hub-slate leading-relaxed mb-6">
+            Aunque los planes gratuitos tienen límites, son suficientes para aprender, validar ideas y crear tus primeros flujos de trabajo con inteligencia artificial.
+          </p>
+          <a href="/blog" class="inline-flex items-center px-5 py-3 bg-hub-accent text-white font-medium rounded-lg hover:bg-hub-accentLight transition-colors">
+            Ver análisis de herramientas →
+          </a>
+        </div>
+
+        <div class="space-y-3">
+          {useCases.map((item) => (
+            <div class="bg-hub-white border border-hub-grayLighter rounded-lg p-4 text-hub-slate">
+              {item}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="py-14 bg-hub-white">
+      <div class="max-w-5xl mx-auto px-6">
+        <h2 class="text-2xl md:text-3xl font-bold text-hub-dark mb-5">Cómo elegir una herramienta de IA gratuita</h2>
+        <div class="grid md:grid-cols-3 gap-5">
+          <div class="border border-hub-grayLighter rounded-xl p-5">
+            <h3 class="font-bold text-hub-dark mb-2">1. Empieza por tu objetivo</h3>
+            <p class="text-sm text-hub-slate">No elijas la herramienta por moda. Elige según quieras escribir, diseñar, programar, estudiar o automatizar.</p>
+          </div>
+          <div class="border border-hub-grayLighter rounded-xl p-5">
+            <h3 class="font-bold text-hub-dark mb-2">2. Revisa los límites</h3>
+            <p class="text-sm text-hub-slate">Comprueba cuántos mensajes, créditos, imágenes o funciones permite el plan gratuito.</p>
+          </div>
+          <div class="border border-hub-grayLighter rounded-xl p-5">
+            <h3 class="font-bold text-hub-dark mb-2">3. Valida antes de pagar</h3>
+            <p class="text-sm text-hub-slate">Usa la versión gratis para comprobar si realmente mejora tu trabajo antes de contratar un plan premium.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
