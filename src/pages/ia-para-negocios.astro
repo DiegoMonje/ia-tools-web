@@ -1,0 +1,123 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+
+const businessAreas = [
+  {
+    title: 'Marketing y ventas',
+    description: 'Genera ideas de campañas, anuncios, emails, guiones comerciales, publicaciones para redes sociales y contenido SEO.',
+  },
+  {
+    title: 'Atención al cliente',
+    description: 'Crea respuestas frecuentes, bases de conocimiento, chatbots internos y procesos para responder más rápido.',
+  },
+  {
+    title: 'Operaciones y administración',
+    description: 'Resume documentos, organiza tareas, prepara informes, automatiza procesos repetitivos y reduce trabajo manual.',
+  },
+  {
+    title: 'Análisis y decisiones',
+    description: 'Convierte datos, reseñas, encuestas y documentos en conclusiones útiles para tomar mejores decisiones.',
+  },
+];
+
+const recommendedStack = [
+  { tool: 'ChatGPT o Claude', use: 'Redacción, estrategia, análisis, documentación y soporte diario' },
+  { tool: 'Perplexity', use: 'Investigación rápida, búsqueda de fuentes y análisis de mercado' },
+  { tool: 'Canva IA', use: 'Creatividades, presentaciones, imágenes comerciales y material visual' },
+  { tool: 'n8n o Zapier', use: 'Automatización de tareas entre formularios, hojas de cálculo, email y CRM' },
+  { tool: 'Notion AI o ClickUp AI', use: 'Organización del equipo, documentación y gestión de proyectos' },
+];
+---
+
+<Layout
+  title="IA para negocios: herramientas y usos prácticos para empresas"
+  description="Guía práctica de inteligencia artificial para negocios, autónomos y pymes. Herramientas, casos de uso y formas de ahorrar tiempo con IA."
+>
+  <Header />
+
+  <main>
+    <section class="bg-hub-bg border-b border-hub-grayLighter py-16">
+      <div class="max-w-5xl mx-auto px-6">
+        <span class="inline-block text-sm font-semibold uppercase tracking-wider text-hub-accent mb-4">IA empresarial</span>
+        <h1 class="text-4xl md:text-5xl font-bold text-hub-dark mb-5 leading-tight">
+          IA para negocios: cómo usar inteligencia artificial en tu empresa
+        </h1>
+        <p class="text-lg text-hub-slate max-w-3xl leading-relaxed">
+          La inteligencia artificial ya no es solo para grandes empresas. Un autónomo, una tienda online, una pyme o una agencia pueden usar IA para vender mejor, crear contenido, responder clientes, organizar procesos y ahorrar horas de trabajo.
+        </p>
+      </div>
+    </section>
+
+    <section class="py-14 bg-hub-white">
+      <div class="max-w-5xl mx-auto px-6">
+        <div class="max-w-3xl mb-8">
+          <h2 class="text-2xl md:text-3xl font-bold text-hub-dark mb-3">Dónde aplicar IA en un negocio</h2>
+          <p class="text-hub-slate">
+            El mejor punto de partida no es comprar muchas herramientas, sino elegir un proceso concreto que se repite cada semana y mejorarlo con IA.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-5">
+          {businessAreas.map((area) => (
+            <div class="border border-hub-grayLighter rounded-xl p-6 bg-hub-bg">
+              <h3 class="text-xl font-bold text-hub-dark mb-2">{area.title}</h3>
+              <p class="text-sm text-hub-slate leading-relaxed">{area.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="py-14 bg-hub-bg">
+      <div class="max-w-5xl mx-auto px-6 grid md:grid-cols-2 gap-10">
+        <div>
+          <h2 class="text-2xl md:text-3xl font-bold text-hub-dark mb-4">Stack recomendado para empezar</h2>
+          <p class="text-hub-slate leading-relaxed mb-6">
+            Para empezar no necesitas un sistema complejo. Puedes combinar pocas herramientas y crear un flujo sencillo para contenido, ventas, operaciones y automatización.
+          </p>
+          <a href="/herramientas-ia-gratis" class="inline-flex items-center px-5 py-3 bg-hub-accent text-white font-medium rounded-lg hover:bg-hub-accentLight transition-colors">
+            Ver herramientas IA gratis →
+          </a>
+        </div>
+
+        <div class="space-y-3">
+          {recommendedStack.map((item) => (
+            <div class="bg-hub-white border border-hub-grayLighter rounded-lg p-4">
+              <h3 class="font-bold text-hub-dark">{item.tool}</h3>
+              <p class="text-sm text-hub-slate mt-1">{item.use}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="py-14 bg-hub-white">
+      <div class="max-w-5xl mx-auto px-6">
+        <h2 class="text-2xl md:text-3xl font-bold text-hub-dark mb-5">Plan simple para implementar IA</h2>
+        <div class="grid md:grid-cols-4 gap-4">
+          <div class="border border-hub-grayLighter rounded-xl p-5">
+            <p class="text-hub-accent font-bold mb-2">Paso 1</p>
+            <h3 class="font-bold text-hub-dark mb-2">Detecta tareas repetidas</h3>
+            <p class="text-sm text-hub-slate">Busca procesos que se hacen todas las semanas: emails, informes, contenidos o atención al cliente.</p>
+          </div>
+          <div class="border border-hub-grayLighter rounded-xl p-5">
+            <p class="text-hub-accent font-bold mb-2">Paso 2</p>
+            <h3 class="font-bold text-hub-dark mb-2">Crea plantillas</h3>
+            <p class="text-sm text-hub-slate">Prepara prompts, formatos de respuesta y documentos base para estandarizar resultados.</p>
+          </div>
+          <div class="border border-hub-grayLighter rounded-xl p-5">
+            <p class="text-hub-accent font-bold mb-2">Paso 3</p>
+            <h3 class="font-bold text-hub-dark mb-2">Mide el ahorro</h3>
+            <p class="text-sm text-hub-slate">Calcula tiempo ahorrado, mejora de calidad y reducción de errores antes de escalar.</p>
+          </div>
+          <div class="border border-hub-grayLighter rounded-xl p-5">
+            <p class="text-hub-accent font-bold mb-2">Paso 4</p>
+            <h3 class="font-bold text-hub-dark mb-2">Automatiza</h3>
+            <p class="text-sm text-hub-slate">Cuando el proceso esté claro, conecta herramientas con n8n, Zapier o Make.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
