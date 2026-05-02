@@ -4,6 +4,7 @@ import Header from '../../components/Header.astro';
 import RecommendationBox from '../../components/RecommendationBox.astro';
 import ArticleCard from '../../components/ArticleCard.astro';
 import { getCollection } from 'astro:content';
+import { slugify } from '../../utils/slugify';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -16,46 +17,59 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { Content } = await post.render();
 
-const categoriaUrl = post.data.category.toLowerCase().replace(/ /g, '-').replace(/[áéíóú]/g, c => 'aeiou'.replace(c, ''));
+const categoriaUrl = slugify(post.data.category);
+const siteUrl = Astro.site?.toString().replace(/\/$/, '') || 'https://ia-tools-web.pages.dev';
+const articleUrl = new URL(`/blog/${post.slug}`, siteUrl).toString();
+const articleImage = post.data.heroImage
+  ? new URL(post.data.heroImage, siteUrl).toString()
+  : new URL('/og-image.svg', siteUrl).toString();
 
 const allPosts = await getCollection('blog');
 const relatedPosts = allPosts
-  .filter(p => p.data.category === post.data.category && p.slug !== post.slug)
+  .filter((p) => p.data.category === post.data.category && p.slug !== post.slug)
   .slice(0, 3);
 
-const siteUrl = 'https://www.tu-dominio-real.com';
-const faqSchema = post.data.faq && post.data.faq.length > 0 ? post.data.faq.map(f => ({
-  "@type": "Question",
-  "name": f.question,
-  "acceptedAnswer": {
-    "@type": "Answer",
-    "text": f.answer
-  }
-})) : [];
+const faqSchema = post.data.faq?.length
+  ? post.data.faq.map((f) => ({
+      '@type': 'Question',
+      name: f.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: f.answer,
+      },
+    }))
+  : [];
 
 const articleSchema = {
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": post.data.title,
-  "description": post.data.description,
-  "image": post.data.heroImage,
-  "author": {
-    "@type": "Organization",
-    "name": post.data.author
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: post.data.title,
+  description: post.data.description,
+  image: articleImage,
+  mainEntityOfPage: articleUrl,
+  author: {
+    '@type': 'Organization',
+    name: post.data.author,
   },
-  "publisher": {
-    "@type": "Organization",
-    "name": "IA Tools Hub"
+  publisher: {
+    '@type': 'Organization',
+    name: 'IA Tools Hub',
+    logo: {
+      '@type': 'ImageObject',
+      url: new URL('/logo.svg', siteUrl).toString(),
+    },
   },
-  "datePublished": post.data.pubDate.toISOString(),
-  "dateModified": (post.data.updatedDate || post.data.pubDate).toISOString()
+  datePublished: post.data.pubDate.toISOString(),
+  dateModified: (post.data.updatedDate || post.data.pubDate).toISOString(),
 };
 
-const faqPageSchema = faqSchema.length > 0 ? {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": faqSchema
-} : null;
+const faqPageSchema = faqSchema.length > 0
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: faqSchema,
+    }
+  : null;
 
 const formatDate = (date: Date) => {
   return date.toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' });
@@ -65,7 +79,7 @@ const formatDate = (date: Date) => {
 <Layout 
   title={`${post.data.title} - IA Tools Hub`}
   description={post.data.description}
-  image={post.data.heroImage}
+  image={articleImage}
   article={{
     publishedTime: post.data.pubDate.toISOString(),
     modifiedTime: post.data.updatedDate?.toISOString() || post.data.pubDate.toISOString(),
@@ -81,8 +95,7 @@ const formatDate = (date: Date) => {
   
   <main class="py-12 bg-hub-bg">
     <article class="max-w-3xl mx-auto px-6">
-      <!-- Breadcrumbs -->
-      <nav class="flex items-center gap-2 text-sm text-hub-gray mb-8">
+      <nav class="flex items-center gap-2 text-sm text-hub-gray mb-8" aria-label="Migas de pan">
         <a href="/" class="hover:text-hub-accent transition-colors">Inicio</a>
         <span class="text-hub-grayLighter">/</span>
         <a href="/blog" class="hover:text-hub-accent transition-colors">Herramientas IA</a>
@@ -90,7 +103,6 @@ const formatDate = (date: Date) => {
         <a href={`/categoria/${categoriaUrl}`} class="hover:text-hub-accent transition-colors">{post.data.category}</a>
       </nav>
 
-      <!-- Article Header -->
       <header class="mb-10">
         <span class="inline-block text-xs font-medium uppercase tracking-widest text-hub-accent mb-4">
           {post.data.category}
@@ -122,23 +134,21 @@ const formatDate = (date: Date) => {
         </div>
       </header>
 
-      <!-- Featured Image -->
       {post.data.heroImage && (
         <figure class="mb-10">
           <img 
             src={post.data.heroImage} 
             alt={post.data.title}
             class="w-full rounded-lg"
+            loading="eager"
           />
         </figure>
       )}
 
-      <!-- Article Content -->
       <div class="prose prose-lg max-w-none prose-headings:font-semibold prose-headings:text-hub-dark prose-a:text-hub-accent prose-a:no-underline hover:prose-a:underline prose-strong:font-semibold prose-p:text-hub-darkMid prose-p:leading-relaxed prose-blockquote:border-l-hub-accent prose-blockquote:text-hub-slate">
         <Content />
       </div>
 
-      <!-- Tags -->
       {post.data.tags.length > 0 && (
         <div class="mt-10 pt-8 border-t border-hub-grayLighter">
           <div class="flex flex-wrap gap-2">
@@ -151,16 +161,14 @@ const formatDate = (date: Date) => {
         </div>
       )}
 
-      <!-- Recommendation Box -->
       <RecommendationBox 
-        title="Nuestra Recomendación"
-        recommendation="Basado en nuestro análisis, esta herramienta es altamente recomendada para usuarios que buscan calidad y versatilidad."
+        title="Recomendación editorial"
+        recommendation="Antes de contratar cualquier herramienta, revisa siempre su web oficial, sus precios actualizados y sus condiciones de uso."
       />
 
-      <!-- FAQ Section -->
       {post.data.faq && post.data.faq.length > 0 && (
         <section class="mt-12 bg-hub-white border border-hub-grayLighter rounded-lg p-8">
-          <h2 class="text-2xl font-bold text-hub-dark mb-8">Preguntas Frecuentes</h2>
+          <h2 class="text-2xl font-bold text-hub-dark mb-8">Preguntas frecuentes</h2>
           <div class="space-y-8">
             {post.data.faq.map((faqItem) => (
               <div class="border-b border-hub-grayLighter pb-8 last:border-0 last:pb-0">
@@ -172,7 +180,6 @@ const formatDate = (date: Date) => {
         </section>
       )}
 
-      <!-- Author Box -->
       <div class="mt-12 bg-hub-white border border-hub-grayLighter rounded-lg p-6">
         <div class="flex items-start gap-4">
           <div class="w-12 h-12 bg-hub-accent rounded-full flex items-center justify-center text-white font-semibold text-lg flex-shrink-0">
@@ -181,8 +188,7 @@ const formatDate = (date: Date) => {
           <div>
             <p class="font-medium text-hub-dark mb-1">Publicado por {post.data.author}</p>
             <p class="text-sm text-hub-slate">
-              Análisis y reviews de herramientas de inteligencia artificial. 
-              Comparativas prácticas y guías detalladas.
+              Análisis de herramientas de inteligencia artificial, comparativas prácticas y guías orientadas a tomar mejores decisiones.
             </p>
           </div>
         </div>
@@ -190,11 +196,10 @@ const formatDate = (date: Date) => {
     </article>
   </main>
 
-  <!-- Related Articles -->
   {relatedPosts.length > 0 && (
     <section class="py-12 bg-hub-white">
       <div class="max-w-3xl mx-auto px-6">
-        <h2 class="text-2xl font-bold text-hub-dark mb-8">Artículos Relacionados</h2>
+        <h2 class="text-2xl font-bold text-hub-dark mb-8">Artículos relacionados</h2>
         <div class="grid md:grid-cols-3 gap-6">
           {relatedPosts.map((related) => (
             <ArticleCard post={related} compact />
@@ -204,27 +209,12 @@ const formatDate = (date: Date) => {
     </section>
   )}
 
-  <!-- Newsletter CTA -->
   <section class="py-16 bg-hub-bg">
     <div class="max-w-3xl mx-auto px-6 text-center">
-      <h2 class="text-2xl font-bold text-hub-dark mb-3">¿Te útil nuestro análisis?</h2>
+      <h2 class="text-2xl font-bold text-hub-dark mb-3">¿Te ha resultado útil este análisis?</h2>
       <p class="text-hub-slate mb-8">
-        Recibe las mejores herramientas de IA cada semana en tu email.
+        Próximamente podrás recibir nuevas guías y comparativas por email.
       </p>
-      <form class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-        <input 
-          type="email" 
-          placeholder="Tu email"
-          class="flex-1 px-5 py-3 bg-hub-white border border-hub-grayLighter focus:border-hub-accent focus:outline-none transition-colors rounded-lg"
-          required
-        />
-        <button 
-          type="submit"
-          class="px-8 py-3 bg-hub-accent text-white font-medium hover:bg-hub-accentLight transition-colors rounded-lg whitespace-nowrap"
-        >
-          Suscribirme
-        </button>
-      </form>
     </div>
   </section>
 </Layout>
