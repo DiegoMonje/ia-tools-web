@@ -1,0 +1,43 @@
+---
+interface Props {
+  posts: Array<{
+    slug: string;
+    data: {
+      title: string;
+      description: string;
+      category: string;
+      pubDate: Date;
+      readTime: string;
+    };
+  }>;
+}
+
+const { posts } = Astro.props;
+
+const formatDate = (date: Date) => {
+  return date.toLocaleDateString('es-ES', { day: 'numeric', month: 'short', year: 'numeric' });
+};
+---
+
+{posts.length > 0 && (
+  <section class="related-posts border-t border-editorial-grayLighter pt-12">
+    <h2 class="font-serif text-xl font-semibold text-editorial-dark mb-6">Artículos relacionados</h2>
+    <div class="grid md:grid-cols-3 gap-6">
+      {posts.map((post) => (
+        <a href={`/blog/${post.slug}`} class="group">
+          <span class="inline-block text-xs font-medium uppercase tracking-widest text-editorial-accent mb-2">
+            {post.data.category}
+          </span>
+          <h3 class="font-serif text-base font-semibold text-editorial-dark leading-snug mb-2 group-hover:text-editorial-accent transition-colors">
+            {post.data.title}
+          </h3>
+          <div class="flex items-center gap-3 text-xs text-editorial-grayLight">
+            <span>{formatDate(post.data.pubDate)}</span>
+            <span class="w-1 h-1 bg-editorial-grayLight rounded-full"></span>
+            <span>{post.data.readTime}</span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+)}

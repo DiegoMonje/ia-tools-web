@@ -1,0 +1,174 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import HubHero from '../components/HubHero.astro';
+import FeaturedToolCard from '../components/FeaturedToolCard.astro';
+import CategoryHubCard from '../components/CategoryHubCard.astro';
+import RankingCard from '../components/RankingCard.astro';
+import ArticleCard from '../components/ArticleCard.astro';
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('blog');
+const sortedPosts = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const featuredPost = sortedPosts.find(post => post.data.featured) || sortedPosts[0];
+const latestPosts = sortedPosts.slice(0, 6);
+
+const categories = [
+  { name: 'Chatbots IA', slug: 'ia-de-texto', count: 8 },
+  { name: 'Generadores de Imágenes', slug: 'ia-de-imagen', count: 6 },
+  { name: 'Automatización', slug: 'productividad', count: 4 },
+  { name: 'Productividad', slug: 'productividad', count: 5 },
+  { name: 'Escritura con IA', slug: 'ia-de-texto', count: 4 },
+  { name: 'Marketing con IA', slug: 'productividad', count: 3 },
+  { name: 'Programación', slug: 'ia-de-codigo', count: 5 },
+  { name: 'Comparativas', slug: 'ia-de-texto', count: 10 },
+];
+
+const topTools = [
+  { title: 'ChatGPT-5', category: 'Chatbot', description: 'El chatbot más popular y versátil', href: '/blog/chatgpt-5-guia-completa', rating: '4.8' },
+  { title: 'Claude 4', category: 'Chatbot', description: 'Excelente para análisis profundos', href: '/blog/claude-4-vs-chatgpt-5', rating: '4.7' },
+  { title: 'Midjourney v7', category: 'Imágenes', description: 'La mejor calidad de imagen', href: '/blog/midjourney-vs-dalle', rating: '4.9' },
+  { title: 'DALL-E 4', category: 'Imágenes', description: 'Integrado con ChatGPT', href: '/blog/dalle-4-analisis', rating: '4.5' },
+  { title: 'GitHub Copilot', category: 'Código', description: 'El favorito de desarrolladores', href: '/blog/github-copilot-vs-cursor-vs-claude-code', rating: '4.6' },
+];
+
+const comparisonTools = [
+  { title: 'Claude 4 vs ChatGPT 5', category: 'Comparativa', href: '/blog/claude-4-vs-chatgpt-5', badge: 'Popular' },
+  { title: 'Midjourney vs DALL-E 4', category: 'Comparativa', href: '/blog/midjourney-vs-dalle', badge: 'Mejor reviewed' },
+  { title: 'Sora vs Runway', category: 'Video IA', href: '/blog/sora-vs-runway', badge: 'Nuevo' },
+  { title: 'ElevenLabs vs PlayHT', category: 'Audio', href: '/blog/elevenlabs-vs-playht', badge: 'Alta calidad' },
+];
+---
+
+<Layout title="IA Tools Hub - Descubre las Mejores Herramientas de IA">
+  <Header />
+  
+  <main>
+    <!-- Hero Section -->
+    <HubHero categories={categories} />
+    
+    <!-- Featured Tools Section -->
+    <section class="py-12 bg-hub-white">
+      <div class="max-w-5xl mx-auto px-6">
+        <div class="flex items-center justify-between mb-8">
+          <h2 class="text-2xl font-bold text-hub-dark">Herramientas IA Destacadas</h2>
+          <a href="/blog" class="text-sm font-medium text-hub-accent hover:underline">
+            Ver todas →
+          </a>
+        </div>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <FeaturedToolCard 
+            title={featuredPost.data.title}
+            description={featuredPost.data.description}
+            category={featuredPost.data.category}
+            image={featuredPost.data.heroImage}
+            href={`/blog/${featuredPost.slug}`}
+            cta="Ver análisis"
+            featured
+          />
+          {sortedPosts.slice(1, 5).map((post) => (
+            <FeaturedToolCard 
+              title={post.data.title}
+              description={post.data.description}
+              category={post.data.category}
+              image={post.data.heroImage}
+              href={`/blog/${post.slug}`}
+              cta="Ver análisis"
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+    
+    <!-- Categories Section -->
+    <section class="py-12 bg-hub-bg">
+      <div class="max-w-5xl mx-auto px-6">
+        <h2 class="text-2xl font-bold text-hub-dark mb-8 text-center">Explorar por Categoría</h2>
+        <CategoryHubCard categories={categories} />
+      </div>
+    </section>
+    
+    <!-- Rankings Section -->
+    <section class="py-12 bg-hub-white">
+      <div class="max-w-5xl mx-auto px-6">
+        <h2 class="text-2xl font-bold text-hub-dark mb-8">Top Herramientas IA</h2>
+        
+        <div class="grid md:grid-cols-2 gap-4">
+          {topTools.map((tool, index) => (
+            <RankingCard 
+              rank={index + 1}
+              title={tool.title}
+              category={tool.category}
+              description={tool.description}
+              href={tool.href}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+    
+    <!-- Latest Articles Section -->
+    <section class="py-12 bg-hub-bg">
+      <div class="max-w-5xl mx-auto px-6">
+        <div class="flex items-center justify-between mb-8">
+          <h2 class="text-2xl font-bold text-hub-dark">Últimos Artículos</h2>
+          <a href="/blog" class="text-sm font-medium text-hub-accent hover:underline">
+            Ver todos →
+          </a>
+        </div>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {latestPosts.map((post) => (
+            <ArticleCard post={post} />
+          ))}
+        </div>
+      </div>
+    </section>
+    
+    <!-- Comparison CTA -->
+    <section class="py-12 bg-hub-accent">
+      <div class="max-w-5xl mx-auto px-6 text-center">
+        <h2 class="text-2xl font-bold text-white mb-4">¿Necesitas Comparar Herramientas?</h2>
+        <p class="text-hub-grayLight mb-8 max-w-2xl mx-auto">
+          Encuentra la mejor herramienta para tu caso de uso. Nuestras comparativas detalladas te ayudan a decidir.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          {comparisonTools.map((tool) => (
+            <a href={tool.href} class="px-5 py-3 bg-hub-white text-hub-accent font-medium hover:bg-hub-grayLighter transition-colors rounded-lg">
+              {tool.title}
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+    
+    <!-- Newsletter -->
+    <section class="py-16 bg-hub-white">
+      <div class="max-w-3xl mx-auto px-6 text-center">
+        <h2 class="text-2xl font-bold text-hub-dark mb-3">Recibe las Mejores Herramientas de IA</h2>
+        <p class="text-hub-slate mb-8">
+          Guías, comparativas y novedades directamente en tu email cada semana.
+        </p>
+        <form class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+          <input 
+            type="email" 
+            placeholder="Tu email"
+            class="flex-1 px-5 py-3 bg-hub-white border border-hub-grayLighter focus:border-hub-accent focus:outline-none transition-colors rounded-lg"
+            required
+          />
+          <button 
+            type="submit"
+            class="px-8 py-3 bg-hub-accent text-white font-medium hover:bg-hub-accentLight transition-colors rounded-lg whitespace-nowrap"
+          >
+            Suscribirme
+          </button>
+        </form>
+        <p class="text-xs text-hub-gray mt-4">
+          No spam. Solo contenido de valor. Cancela cuando quieras.
+        </p>
+      </div>
+    </section>
+  </main>
+</Layout>

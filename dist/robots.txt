@@ -1,0 +1,16 @@
+# Robots.txt - IA Tools
+# ⚠️ IMPORTANTE: Reemplaza tu-dominio-real.com por tu dominio real antes de desplegar
+
+User-agent: *
+Allow: /
+
+Sitemap: https://www.tu-dominio-real.com/sitemap.xml
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: Google-Extended
+Allow: /

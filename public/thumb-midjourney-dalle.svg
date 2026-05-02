@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f093fb"/>
+      <stop offset="100%" style="stop-color:#f5576c"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="400" fill="url(#bg)"/>
+  <circle cx="200" cy="200" r="120" fill="rgba(255,255,255,0.1)"/>
+  <circle cx="600" cy="200" r="120" fill="rgba(255,255,255,0.1)"/>
+  <!-- Left image -->
+  <rect x="100" y="80" width="280" height="240" rx="16" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
+  <circle cx="240" cy="170" r="40" fill="rgba(255,255,255,0.2)"/>
+  <rect x="160" y="230" width="160" height="12" rx="6" fill="rgba(255,255,255,0.15)"/>
+  <rect x="160" y="255" width="120" height="10" rx="5" fill="rgba(255,255,255,0.1)"/>
+  <text x="240" y="300" text-anchor="middle" fill="white" font-family="Arial" font-size="14" font-weight="bold">MIDJOURNEY v7</text>
+  <!-- Right image -->
+  <rect x="420" y="80" width="280" height="240" rx="16" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
+  <circle cx="560" cy="170" r="40" fill="rgba(255,255,255,0.2)"/>
+  <rect x="480" y="230" width="160" height="12" rx="6" fill="rgba(255,255,255,0.15)"/>
+  <rect x="480" y="255" width="120" height="10" rx="5" fill="rgba(255,255,255,0.1)"/>
+  <text x="560" y="300" text-anchor="middle" fill="white" font-family="Arial" font-size="14" font-weight="bold">DALL-E 4</text>
+  <!-- VS -->
+  <circle cx="400" cy="200" r="30" fill="rgba(255,255,255,0.9)"/>
+  <text x="400" y="208" text-anchor="middle" fill="#f5576c" font-family="Arial" font-size="20" font-weight="bold">VS</text>
+</svg>

@@ -1,0 +1,44 @@
+---
+interface Props {
+  name: string;
+  category?: string;
+  bestFor?: string;
+  price?: string;
+  rating?: string;
+  href?: string;
+}
+
+const { name, category, bestFor, price, rating, href = '#' } = Astro.props;
+---
+
+<div class="tool-summary-card bg-hub-white border border-hub-grayLighter rounded-lg p-5">
+  <div class="flex items-start justify-between mb-3">
+    <div>
+      <h4 class="text-lg font-semibold text-hub-dark">{name}</h4>
+      {category && <span class="text-sm text-hub-accent">{category}</span>}
+    </div>
+    {rating && (
+      <span class="px-2 py-1 bg-hub-gold text-white text-sm font-medium rounded">
+        {rating}
+      </span>
+    )}
+  </div>
+  
+  {bestFor && (
+    <div class="mb-3">
+      <span class="text-xs text-hub-gray uppercase tracking-wider">Mejor para</span>
+      <p class="text-sm text-hub-slate">{bestFor}</p>
+    </div>
+  )}
+  
+  {price && (
+    <div class="mb-3">
+      <span class="text-xs text-hub-gray uppercase tracking-wider">Precio</span>
+      <p class="text-sm text-hub-slate">{price}</p>
+    </div>
+  )}
+  
+  <a href={href} class="inline-flex items-center text-sm font-medium text-hub-accent hover:underline">
+    Ver análisis →
+  </a>
+</div>

@@ -1,0 +1,35 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "No te pierdas ninguna novedad",
+  description = "Recibe las últimas comparativas y guías de inteligencia artificial directamente en tu email."
+} = Astro.props;
+---
+
+<section class="newsletter-block bg-editorial-cream py-16 border-y border-editorial-grayLighter">
+  <div class="max-w-2xl mx-auto px-6 text-center">
+    <h2 class="font-serif text-2xl font-semibold text-editorial-dark mb-3">{title}</h2>
+    <p class="text-editorial-gray leading-relaxed mb-8">{description}</p>
+    <form class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+      <input 
+        type="email" 
+        placeholder="Tu email"
+        class="flex-1 px-5 py-3 bg-editorial-white border border-editorial-grayLighter focus:border-editorial-accent focus:outline-none transition-colors text-editorial-dark"
+        required
+      />
+      <button 
+        type="submit"
+        class="px-8 py-3 bg-editorial-accent text-white font-medium hover:bg-editorial-accentLight transition-colors whitespace-nowrap"
+      >
+        Suscribirse
+      </button>
+    </form>
+    <p class="text-xs text-editorial-grayLight mt-4">
+      No spam. Solo contenido de valor. Cancela cuando quieras.
+    </p>
+  </div>
+</section>

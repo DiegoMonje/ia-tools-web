@@ -1,0 +1,56 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+---
+
+<Layout title="Página no encontrada - IA Tools">
+  <Header />
+  
+  <main class="min-h-[60vh] flex items-center justify-center">
+    <div class="max-w-2xl mx-auto px-4 text-center">
+      <div class="text-9xl font-bold text-indigo-200 mb-4">404</div>
+      <h1 class="text-4xl font-bold text-gray-900 mb-4">Página no encontrada</h1>
+      <p class="text-xl text-gray-600 mb-8">
+        Lo sentimos, la página que buscas no existe o ha sido movida.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/" class="bg-indigo-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-indigo-700 transition">
+          Volver al inicio
+        </a>
+        <a href="/contacto" class="bg-gray-100 text-gray-700 px-8 py-3 rounded-full font-semibold hover:bg-gray-200 transition">
+          Contactar con nosotros
+        </a>
+      </div>
+      
+      <div class="mt-12">
+        <h2 class="text-lg font-semibold text-gray-900 mb-4">Explorar categorías</h2>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+          <a href="/blog/chatgpt-5-guia-completa" class="bg-gray-50 p-4 rounded-lg hover:bg-gray-100 transition">
+            <span class="text-2xl block mb-1">📝</span>
+            <span class="text-sm font-medium">IA de Texto</span>
+          </a>
+          <a href="/blog/como-usar-midjourney" class="bg-gray-50 p-4 rounded-lg hover:bg-gray-100 transition">
+            <span class="text-2xl block mb-1">🎨</span>
+            <span class="text-sm font-medium">IA de Imagen</span>
+          </a>
+          <a href="/blog/crear-videos-ia" class="bg-gray-50 p-4 rounded-lg hover:bg-gray-100 transition">
+            <span class="text-2xl block mb-1">🎬</span>
+            <span class="text-sm font-medium">IA de Video</span>
+          </a>
+          <a href="/blog/herramientas-voz-ia" class="bg-gray-50 p-4 rounded-lg hover:bg-gray-100 transition">
+            <span class="text-2xl block mb-1">🎙️</span>
+            <span class="text-sm font-medium">IA de Audio</span>
+          </a>
+          <a href="/blog/mejores-ia-codigo" class="bg-gray-50 p-4 rounded-lg hover:bg-gray-100 transition">
+            <span class="text-2xl block mb-1">💻</span>
+            <span class="text-sm font-medium">IA de Código</span>
+          </a>
+          <a href="/blog/ia-estudiantes" class="bg-gray-50 p-4 rounded-lg hover:bg-gray-100 transition">
+            <span class="text-2xl block mb-1">📚</span>
+            <span class="text-sm font-medium">Productividad</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

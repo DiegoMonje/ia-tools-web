@@ -1,0 +1,40 @@
+---
+interface Category {
+  name: string;
+  slug: string;
+  icon?: string;
+  count?: number;
+}
+
+interface Props {
+  categories?: Category[];
+}
+
+const { categories = [
+  { name: 'Chatbots IA', slug: 'chatbots-ia', count: 12 },
+  { name: 'Generadores de Imágenes', slug: 'generadores-imagen', count: 8 },
+  { name: 'Automatización', slug: 'automatizacion', count: 6 },
+  { name: 'Productividad', slug: 'productividad', count: 10 },
+  { name: 'Escritura con IA', slug: 'escritura-ia', count: 7 },
+  { name: 'Marketing con IA', slug: 'marketing-ia', count: 5 },
+  { name: 'Programación', slug: 'programacion', count: 9 },
+  { name: 'Comparativas', slug: 'comparativas', count: 15 },
+] } = Astro.props;
+---
+
+<div class="category-hub-grid">
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+    {categories.map((cat) => (
+      <a href={`/categoria/${cat.slug}`} class="category-card group block p-5 bg-hub-white border border-hub-grayLighter hover:border-hub-accent hover:shadow-md transition-all rounded-lg text-center">
+        <h3 class="text-base font-semibold text-hub-dark mb-1 group-hover:text-hub-accent transition-colors">
+          {cat.name}
+        </h3>
+        {cat.count && (
+          <p class="text-sm text-hub-gray">
+            {cat.count} {cat.count === 1 ? 'herramienta' : 'herramientas'}
+          </p>
+        )}
+      </a>
+    ))}
+  </div>
+</div>

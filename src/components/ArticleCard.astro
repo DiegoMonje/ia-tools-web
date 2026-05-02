@@ -1,0 +1,62 @@
+---
+interface Post {
+  slug: string;
+  data: {
+    title: string;
+    description: string;
+    category: string;
+    pubDate: Date;
+    readTime: string;
+    heroImage?: string;
+  };
+}
+
+interface Props {
+  post: Post;
+  compact?: boolean;
+}
+
+const { post, compact = false } = Astro.props;
+
+const formatDate = (date: Date) => {
+  return date.toLocaleDateString('es-ES', { day: 'numeric', month: 'short', year: 'numeric' });
+};
+---
+
+<article class="article-card group">
+  <a href={`/blog/${post.slug}`} class="block h-full">
+    <div class="h-full bg-hub-white border border-hub-grayLighter hover:border-hub-accent hover:shadow-md transition-all rounded-lg overflow-hidden">
+      {post.data.heroImage && (
+        <div class="aspect-[16/9] bg-hub-bgWarm overflow-hidden">
+          <img 
+            src={post.data.heroImage} 
+            alt={post.data.title}
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          />
+        </div>
+      )}
+      
+      <div class="p-5">
+        <span class="inline-block text-xs font-medium uppercase tracking-wider text-hub-accent mb-2">
+          {post.data.category}
+        </span>
+        
+        <h3 class={`font-semibold text-hub-dark mb-2 group-hover:text-hub-accent transition-colors ${compact ? 'text-base' : 'text-lg'}`}>
+          {post.data.title}
+        </h3>
+        
+        {!compact && (
+          <p class="text-sm text-hub-slate mb-3 line-clamp-2">
+            {post.data.description}
+          </p>
+        )}
+        
+        <div class="flex items-center gap-3 text-xs text-hub-gray">
+          <span>{formatDate(post.data.pubDate)}</span>
+          <span>•</span>
+          <span>{post.data.readTime} de lectura</span>
+        </div>
+      </div>
+    </div>
+  </a>
+</article>

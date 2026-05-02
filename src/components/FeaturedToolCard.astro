@@ -1,0 +1,74 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  category: string;
+  image?: string;
+  href: string;
+  cta?: string;
+  badge?: string;
+  rating?: string;
+  featured?: boolean;
+}
+
+const { 
+  title, 
+  description, 
+  category, 
+  image, 
+  href, 
+  cta = 'Ver análisis',
+  badge,
+  rating,
+  featured = false 
+} = Astro.props;
+---
+
+<article class={`tool-card group ${featured ? 'featured' : ''}`}>
+  <a href={href} class="block h-full">
+    <div class="h-full bg-hub-white border border-hub-grayLighter hover:border-hub-accent transition-colors rounded-lg overflow-hidden">
+      {badge && (
+        <div class="px-4 pt-4">
+          <span class="inline-block px-3 py-1 bg-hub-accent text-white text-xs font-medium rounded-full">
+            {badge}
+          </span>
+        </div>
+      )}
+      
+      <div class="p-5">
+        {category && (
+          <span class="inline-block text-xs font-medium uppercase tracking-wider text-hub-accent mb-2">
+            {category}
+          </span>
+        )}
+        
+        <h3 class="text-lg font-semibold text-hub-dark mb-2 group-hover:text-hub-accent transition-colors">
+          {title}
+        </h3>
+        
+        <p class="text-sm text-hub-slate mb-4 line-clamp-2">
+          {description}
+        </p>
+        
+        {rating && (
+          <div class="flex items-center gap-2 mb-4">
+            <span class="text-sm font-medium text-hub-gold">{rating}</span>
+            <div class="flex">
+              {[...Array(5)].map((_, i) => (
+                <svg class={`w-4 h-4 ${i < parseInt(rating) ? 'text-hub-gold' : 'text-hub-grayLighter'}`} fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l.07.18a1.464 1.464 0 003.515 1.02l.117-.15c.376-.476.989-.606 1.373-.29l.18.07c.921.3.921 1.603 0 1.902l-.18.07a1.464 1.464 0 00-1.02 3.515l.15.117c.476.376.606.989.29 1.373l-.07.18c-.3.921-1.603.921-1.902 0l-.07-.18a1.464 1.464 0 00-3.515-1.02l-.117.15c-.476.376-.989.606-1.373.29l-.18-.07c-.921-.3-.921-1.603 0-1.902l.18-.07a1.464 1.464 0 001.02-3.515l-.15-.117c-.376-.476-.606-.989-.29-1.373l.07-.18z"/>
+                </svg>
+              ))}
+            </div>
+          </div>
+        )}
+        
+        <div class="flex items-center justify-between">
+          <span class="text-sm font-medium text-hub-accent group-hover:underline">
+            {cta} →
+          </span>
+        </div>
+      </div>
+    </div>
+  </a>
+</article>

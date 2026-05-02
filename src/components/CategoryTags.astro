@@ -1,0 +1,45 @@
+---
+const categories = [
+  { name: 'IA de Texto', slug: 'ia-de-texto' },
+  { name: 'IA de Imagen', slug: 'ia-de-imagen' },
+  { name: 'IA de Video', slug: 'ia-de-video' },
+  { name: 'IA de Audio', slug: 'ia-de-audio' },
+  { name: 'IA de Código', slug: 'ia-de-codigo' },
+  { name: 'Automatización', slug: 'automatizacion' },
+  { name: 'Productividad', slug: 'productividad' },
+  { name: 'Guías', slug: 'guias' },
+];
+
+interface Props {
+  active?: string;
+}
+
+const { active } = Astro.props;
+---
+
+<div class="category-tags">
+  <div class="flex flex-wrap gap-2">
+    <a 
+      href="/blog" 
+      class={`px-4 py-2 text-sm font-medium transition-colors border ${
+        !active 
+          ? 'bg-editorial-dark text-white border-editorial-dark' 
+          : 'bg-editorial-white text-editorial-gray border-editorial-grayLighter hover:border-editorial-gray hover:text-editorial-dark'
+      }`}
+    >
+      Todos
+    </a>
+    {categories.map((cat) => (
+      <a 
+        href={`/categoria/${cat.slug}`}
+        class={`px-4 py-2 text-sm font-medium transition-colors border ${
+          active === cat.slug
+            ? 'bg-editorial-dark text-white border-editorial-dark'
+            : 'bg-editorial-white text-editorial-gray border-editorial-grayLighter hover:border-editorial-gray hover:text-editorial-dark'
+        }`}
+      >
+        {cat.name}
+      </a>
+    ))}
+  </div>
+</div>

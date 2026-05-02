@@ -1,0 +1,84 @@
+---
+interface Category {
+  name: string;
+  slug: string;
+  count?: number;
+  icon?: string;
+}
+
+interface Props {
+  categories?: Category[];
+}
+
+const {
+  categories = [
+    { name: 'Chatbots IA', slug: 'chatbots-ia', count: 12 },
+    { name: 'Generadores de Imágenes', slug: 'generadores-imagen', count: 8 },
+    { name: 'Automatización', slug: 'automatizacion', count: 6 },
+    { name: 'Productividad', slug: 'productividad', count: 10 },
+    { name: 'Escritura con IA', slug: 'escritura-ia', count: 7 },
+    { name: 'Marketing con IA', slug: 'marketing-ia', count: 5 },
+    { name: 'Programación', slug: 'programacion', count: 9 },
+    { name: 'Comparativas', slug: 'comparativas', count: 15 },
+  ]
+} = Astro.props;
+---
+
+<section class="hub-hero bg-hub-bg py-16 md:py-20 border-b border-hub-grayLighter">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="text-center mb-10">
+      <h1 class="text-4xl md:text-5xl font-bold text-hub-dark mb-4">
+        Descubre las Mejores Herramientas de IA
+      </h1>
+      <p class="text-lg text-hub-slate max-w-2xl mx-auto">
+        Compara, aprende y elige la mejor inteligencia artificial para tu caso de uso. 
+        Guías, comparativas y análisis detallados.
+      </p>
+    </div>
+
+    <!-- Search Bar -->
+    <div class="max-w-2xl mx-auto mb-10">
+      <form class="search-form" action="/blog" method="get">
+        <div class="relative">
+          <input 
+            type="text" 
+            name="q"
+            placeholder="Buscar herramientas, guías o comparativas..."
+            class="w-full px-5 py-4 pl-12 bg-hub-white border border-hub-grayLighter focus:border-hub-accent focus:outline-none transition-colors text-hub-dark text-lg rounded-lg shadow-sm"
+          />
+          <svg class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-hub-gray" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+          </svg>
+          <button 
+            type="submit"
+            class="absolute right-2 top-1/2 -translate-y-1/2 px-5 py-2 bg-hub-accent text-white font-medium hover:bg-hub-accentLight transition-colors rounded-md"
+          >
+            Buscar
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Category Shortcuts -->
+    <div class="flex flex-wrap justify-center gap-3">
+      {categories.map((cat, index) => (
+        <a 
+          href={`/categoria/${cat.slug}`} 
+          class="category-pill px-4 py-2 bg-hub-white border border-hub-grayLighter hover:border-hub-accent hover:text-hub-accent transition-colors rounded-full text-sm font-medium text-hub-slate"
+        >
+          {cat.name}
+          {cat.count && <span class="ml-1 text-hub-grayLight">({cat.count})</span>}
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .search-form input {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  }
+  .search-form input:focus {
+    box-shadow: 0 0 0 3px rgba(3, 105, 161, 0.1);
+  }
+</style>

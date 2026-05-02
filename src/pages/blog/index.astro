@@ -1,0 +1,61 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection('blog');
+const sortedPosts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const categories = [
+  { name: 'Todos', slug: '' },
+  { name: 'Chatbots IA', slug: 'ia-de-texto' },
+  { name: 'Imágenes', slug: 'ia-de-imagen' },
+  { name: 'Video', slug: 'ia-de-video' },
+  { name: 'Audio', slug: 'ia-de-audio' },
+  { name: 'Código', slug: 'ia-de-codigo' },
+  { name: 'Productividad', slug: 'productividad' },
+];
+---
+
+<Layout 
+  title="Herramientas IA - Comparativas, Guías y Análisis"
+  description="Todas las guías, comparativas y análisis de herramientas de inteligencia artificial."
+>
+  <Header />
+  
+  <main class="py-12 bg-hub-bg">
+    <div class="max-w-5xl mx-auto px-6">
+      <!-- Page Header -->
+      <div class="mb-10">
+        <h1 class="text-3xl font-bold text-hub-dark mb-3">Herramientas IA</h1>
+        <p class="text-hub-slate">
+          Descubre, compara y elige las mejores herramientas de inteligencia artificial para tu caso de uso.
+        </p>
+      </div>
+      
+      <!-- Category Filters -->
+      <div class="flex flex-wrap gap-2 mb-8">
+        {categories.map((cat) => (
+          <a 
+            href={cat.slug ? `/categoria/${cat.slug}` : '/blog'}
+            class={`px-4 py-2 text-sm font-medium rounded-full transition-colors ${
+              cat.slug === '' 
+                ? 'bg-hub-accent text-white' 
+                : 'bg-hub-white border border-hub-grayLighter hover:border-hub-accent text-hub-slate'
+            }`}
+          >
+            {cat.name}
+          </a>
+        ))}
+      </div>
+      
+      <!-- Articles Grid -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {sortedPosts.map((post) => (
+          <ArticleCard post={post} />
+        ))}
+      </div>
+    </div>
+  </main>
+</Layout>

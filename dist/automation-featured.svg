@@ -1,0 +1,127 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="50%" style="stop-color:#1e293b"/>
+      <stop offset="100%" style="stop-color:#0f172a"/>
+    </linearGradient>
+    <linearGradient id="notionGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff"/>
+      <stop offset="100%" style="stop-color:#e2e8f0"/>
+    </linearGradient>
+    <linearGradient id="geminiGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#34a853"/>
+      <stop offset="50%" style="stop-color:#4285f4"/>
+      <stop offset="100%" style="stop-color:#ea4335"/>
+    </linearGradient>
+    <linearGradient id="perplexityGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2bb5f6"/>
+      <stop offset="100%" style="stop-color:#1a93d4"/>
+    </linearGradient>
+    <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#e2e8f0"/>
+      <stop offset="50%" style="stop-color:#34a853"/>
+      <stop offset="100%" style="stop-color:#2bb5f6"/>
+    </linearGradient>
+    <filter id="blur1">
+      <feGaussianBlur stdDeviation="50"/>
+    </filter>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="6" stdDeviation="12" flood-color="#000" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  
+  <!-- Background glows -->
+  <circle cx="250" cy="250" r="200" fill="rgba(226,232,240,0.03)" filter="url(#blur1)"/>
+  <circle cx="600" cy="300" r="250" fill="rgba(52,168,83,0.04)" filter="url(#blur1)"/>
+  <circle cx="950" cy="250" r="200" fill="rgba(43,181,246,0.03)" filter="url(#blur1)"/>
+
+  <!-- Grid lines -->
+  <g opacity="0.03" stroke="white" stroke-width="1">
+    <line x1="0" y1="100" x2="1200" y2="100"/>
+    <line x1="0" y1="200" x2="1200" y2="200"/>
+    <line x1="0" y1="300" x2="1200" y2="300"/>
+    <line x1="0" y1="400" x2="1200" y2="400"/>
+    <line x1="0" y1="500" x2="1200" y2="500"/>
+    <line x1="200" y1="0" x2="200" y2="630"/>
+    <line x1="400" y1="0" x2="400" y2="630"/>
+    <line x1="600" y1="0" x2="600" y2="630"/>
+    <line x1="800" y1="0" x2="800" y2="630"/>
+    <line x1="1000" y1="0" x2="1000" y2="630"/>
+  </g>
+
+  <!-- Three panels -->
+  <!-- Panel 1: Notion AI -->
+  <g transform="translate(150, 100)">
+    <rect x="0" y="0" width="280" height="380" rx="16" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)" stroke-width="1.5" filter="url(#shadow)"/>
+    <!-- Notion icon representation -->
+    <rect x="100" y="60" width="80" height="100" rx="6" fill="none" stroke="url(#notionGrad)" stroke-width="3" transform="rotate(-5, 140, 110)"/>
+    <line x1="120" y1="90" x2="170" y2="90" stroke="url(#notionGrad)" stroke-width="2" opacity="0.6"/>
+    <line x1="120" y1="110" x2="160" y2="110" stroke="url(#notionGrad)" stroke-width="2" opacity="0.6"/>
+    <line x1="120" y1="130" x2="155" y2="130" stroke="url(#notionGrad)" stroke-width="2" opacity="0.6"/>
+    <text x="140" y="220" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="22" font-weight="bold">Notion AI</text>
+    <text x="140" y="245" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-family="Arial, sans-serif" font-size="14">Organización + IA</text>
+    <!-- Feature dots -->
+    <circle cx="100" cy="290" r="4" fill="#ffffff" opacity="0.5"/>
+    <text x="115" y="294" fill="rgba(255,255,255,0.4)" font-family="Arial, sans-serif" font-size="12">Resúmenes automáticos</text>
+    <circle cx="100" cy="315" r="4" fill="#ffffff" opacity="0.5"/>
+    <text x="115" y="319" fill="rgba(255,255,255,0.4)" font-family="Arial, sans-serif" font-size="12">Generación de contenido</text>
+    <circle cx="100" cy="340" r="4" fill="#ffffff" opacity="0.5"/>
+    <text x="115" y="344" fill="rgba(255,255,255,0.4)" font-family="Arial, sans-serif" font-size="12">Traducción integrada</text>
+  </g>
+
+  <!-- Panel 2: Gemini -->
+  <g transform="translate(460, 100)">
+    <rect x="0" y="0" width="280" height="380" rx="16" fill="rgba(255,255,255,0.03)" stroke="rgba(52,168,83,0.2)" stroke-width="1.5" filter="url(#shadow)"/>
+    <!-- Gemini spark icon -->
+    <g transform="translate(140, 110)">
+      <path d="M0,-40 L8,-12 L36,0 L8,12 L0,40 L-8,12 L-36,0 L-8,-12Z" fill="url(#geminiGrad)" opacity="0.3"/>
+      <path d="M0,-25 L5,-8 L22,0 L5,8 L0,25 L-5,8 L-22,0 L-5,-8Z" fill="url(#geminiGrad)" opacity="0.5"/>
+      <circle cx="0" cy="0" r="6" fill="url(#geminiGrad)" opacity="0.7"/>
+    </g>
+    <text x="140" y="220" text-anchor="middle" fill="#34a853" font-family="Arial, sans-serif" font-size="22" font-weight="bold">Gemini</text>
+    <text x="140" y="245" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-family="Arial, sans-serif" font-size="14">Google Ecosystem</text>
+    <circle cx="100" cy="290" r="4" fill="#34a853" opacity="0.6"/>
+    <text x="115" y="294" fill="rgba(255,255,255,0.4)" font-family="Arial, sans-serif" font-size="12">Integración Google</text>
+    <circle cx="100" cy="315" r="4" fill="#34a853" opacity="0.6"/>
+    <text x="115" y="319" fill="rgba(255,255,255,0.4)" font-family="Arial, sans-serif" font-size="12">Búsqueda avanzada</text>
+    <circle cx="100" cy="340" r="4" fill="#34a853" opacity="0.6"/>
+    <text x="115" y="344" fill="rgba(255,255,255,0.4)" font-family="Arial, sans-serif" font-size="12">Análisis de datos</text>
+  </g>
+
+  <!-- Panel 3: Perplexity -->
+  <g transform="translate(770, 100)">
+    <rect x="0" y="0" width="280" height="380" rx="16" fill="rgba(255,255,255,0.03)" stroke="rgba(43,181,246,0.2)" stroke-width="1.5" filter="url(#shadow)"/>
+    <!-- Perplexity search icon -->
+    <g transform="translate(140, 110)">
+      <circle cx="-5" cy="-5" r="30" fill="none" stroke="url(#perplexityGrad)" stroke-width="3" opacity="0.4"/>
+      <line x1="18" y1="18" x2="35" y2="35" stroke="url(#perplexityGrad)" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
+      <circle cx="-5" cy="-5" r="15" fill="none" stroke="url(#perplexityGrad)" stroke-width="2" opacity="0.6"/>
+      <path d="M-12,-5 L-8,-5 L-10,-2 L-5,-8 L-2,-2 L2,-5 L-5,5Z" fill="url(#perplexityGrad)" opacity="0.5"/>
+    </g>
+    <text x="140" y="220" text-anchor="middle" fill="#2bb5f6" font-family="Arial, sans-serif" font-size="22" font-weight="bold">Perplexity</text>
+    <text x="140" y="245" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-family="Arial, sans-serif" font-size="14">Search + IA</text>
+    <circle cx="100" cy="290" r="4" fill="#2bb5f6" opacity="0.6"/>
+    <text x="115" y="294" fill="rgba(255,255,255,0.4)" font-family="Arial, sans-serif" font-size="12">Respuestas con fuentes</text>
+    <circle cx="100" cy="315" r="4" fill="#2bb5f6" opacity="0.6"/>
+    <text x="115" y="319" fill="rgba(255,255,255,0.4)" font-family="Arial, sans-serif" font-size="12">Investigación rápida</text>
+    <circle cx="100" cy="340" r="4" fill="#2bb5f6" opacity="0.6"/>
+    <text x="115" y="344" fill="rgba(255,255,255,0.4)" font-family="Arial, sans-serif" font-size="12">Colecciones temáticas</text>
+  </g>
+
+  <!-- VS connections -->
+  <line x1="430" y1="290" x2="460" y2="290" stroke="rgba(255,255,255,0.15)" stroke-width="2" stroke-dasharray="4,4"/>
+  <line x1="740" y1="290" x2="770" y2="290" stroke="rgba(255,255,255,0.15)" stroke-width="2" stroke-dasharray="4,4"/>
+
+  <!-- Top title -->
+  <text x="600" y="50" text-anchor="middle" fill="url(#textGrad)" font-family="Arial, sans-serif" font-size="18" font-weight="300" letter-spacing="6">PRODUCTIVIDAD CON IA</text>
+
+  <!-- Bottom bar -->
+  <rect x="0" y="590" width="1200" height="40" fill="rgba(0,0,0,0.3)"/>
+  <text x="60" y="615" fill="rgba(255,255,255,0.4)" font-family="Arial, sans-serif" font-size="13" font-weight="500" letter-spacing="2">IA TOOLS</text>
+  <text x="600" y="615" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-family="Arial, sans-serif" font-size="12">Análisis • Comparativas • Tutoriales</text>
+  <text x="1140" y="615" text-anchor="end" fill="rgba(255,255,255,0.4)" font-family="Arial, sans-serif" font-size="13" font-weight="500">2026</text>
+</svg>

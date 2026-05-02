@@ -1,0 +1,53 @@
+---
+interface Props {
+  rank: number;
+  title: string;
+  category?: string;
+  description?: string;
+  href: string;
+  cta?: string;
+  badge?: string;
+}
+
+const { rank, title, category, description, href, cta = 'Ver análisis', badge } = Astro.props;
+
+const getRankStyle = (r: number) => {
+  if (r === 1) return 'bg-hub-gold text-white';
+  if (r === 2) return 'bg-hub-grayLighter text-hub-dark';
+  if (r === 3) return 'bg-hub-warning text-white';
+  return 'bg-hub-grayLighter text-hub-slate';
+};
+---
+
+<article class="ranking-card group">
+  <a href={href} class="flex items-start gap-4 p-4 bg-hub-white border border-hub-grayLighter hover:border-hub-accent transition-colors rounded-lg">
+    <div class={`w-10 h-10 flex items-center justify-center rounded-full font-bold text-lg flex-shrink-0 ${getRankStyle(rank)}`}>
+      {rank}
+    </div>
+    
+    <div class="flex-1 min-w-0">
+      {category && (
+        <span class="inline-block text-xs font-medium uppercase tracking-wider text-hub-accent mb-1">
+          {category}
+        </span>
+      )}
+      <h3 class="text-base font-semibold text-hub-dark mb-1 group-hover:text-hub-accent transition-colors truncate">
+        {title}
+      </h3>
+      {description && (
+        <p class="text-sm text-hub-slate line-clamp-1 mb-2">
+          {description}
+        </p>
+      )}
+      <span class="text-sm font-medium text-hub-accent">
+        {cta} →
+      </span>
+    </div>
+    
+    {badge && (
+      <span class="px-2 py-1 bg-hub-accent text-white text-xs font-medium rounded-full flex-shrink-0">
+        {badge}
+      </span>
+    )}
+  </a>
+</article>

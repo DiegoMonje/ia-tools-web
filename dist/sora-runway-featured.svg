@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0a"/>
+      <stop offset="50%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#0a0a0a"/>
+    </linearGradient>
+    <linearGradient id="soraGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10b981"/>
+      <stop offset="100%" style="stop-color:#059669"/>
+    </linearGradient>
+    <linearGradient id="runwayGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8b5cf6"/>
+      <stop offset="100%" style="stop-color:#7c3aed"/>
+    </linearGradient>
+    <linearGradient id="filmGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10b981;stop-opacity:0.15"/>
+      <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:0.15"/>
+    </linearGradient>
+    <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#10b981"/>
+      <stop offset="50%" style="stop-color:#38f9d7"/>
+      <stop offset="100%" style="stop-color:#8b5cf6"/>
+    </linearGradient>
+    <filter id="blur1">
+      <feGaussianBlur stdDeviation="50"/>
+    </filter>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="8" stdDeviation="16" flood-color="#000" flood-opacity="0.4"/>
+    </filter>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  
+  <!-- Background glows -->
+  <circle cx="350" cy="300" r="250" fill="rgba(16,185,129,0.06)" filter="url(#blur1)"/>
+  <circle cx="850" cy="300" r="250" fill="rgba(139,92,246,0.06)" filter="url(#blur1)"/>
+
+  <!-- Film strip top -->
+  <g opacity="0.06">
+    <rect x="0" y="0" width="1200" height="30" fill="white"/>
+    <rect x="0" y="600" width="1200" height="30" fill="white"/>
+    <rect x="30" y="0" width="40" height="30" fill="black"/>
+    <rect x="100" y="0" width="40" height="30" fill="black"/>
+    <rect x="170" y="0" width="40" height="30" fill="black"/>
+    <rect x="240" y="0" width="40" height="30" fill="black"/>
+    <rect x="310" y="0" width="40" height="30" fill="black"/>
+    <rect x="380" y="0" width="40" height="30" fill="black"/>
+    <rect x="450" y="0" width="40" height="30" fill="black"/>
+    <rect x="520" y="0" width="40" height="30" fill="black"/>
+    <rect x="590" y="0" width="40" height="30" fill="black"/>
+    <rect x="660" y="0" width="40" height="30" fill="black"/>
+    <rect x="730" y="0" width="40" height="30" fill="black"/>
+    <rect x="800" y="0" width="40" height="30" fill="black"/>
+    <rect x="870" y="0" width="40" height="30" fill="black"/>
+    <rect x="940" y="0" width="40" height="30" fill="black"/>
+    <rect x="1010" y="0" width="40" height="30" fill="black"/>
+    <rect x="1080" y="0" width="40" height="30" fill="black"/>
+    <rect x="1150" y="0" width="40" height="30" fill="black"/>
+  </g>
+
+  <!-- Main video screen -->
+  <rect x="200" y="80" width="800" height="420" rx="16" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.08)" stroke-width="1.5" filter="url(#shadow)"/>
+  
+  <!-- Video timeline at bottom of screen -->
+  <rect x="240" y="460" width="720" height="6" rx="3" fill="rgba(255,255,255,0.08)"/>
+  <rect x="240" y="460" width="350" height="6" rx="3" fill="url(#filmGrad)"/>
+  <circle cx="590" cy="463" r="8" fill="#10b981" filter="url(#glow)"/>
+  
+  <!-- Film thumbnails row -->
+  <rect x="240" y="480" width="60" height="30" rx="4" fill="rgba(16,185,129,0.1)" stroke="rgba(16,185,129,0.2)" stroke-width="1"/>
+  <rect x="310" y="480" width="60" height="30" rx="4" fill="rgba(16,185,129,0.15)" stroke="rgba(16,185,129,0.3)" stroke-width="1"/>
+  <rect x="380" y="480" width="60" height="30" rx="4" fill="rgba(16,185,129,0.1)" stroke="rgba(16,185,129,0.2)" stroke-width="1"/>
+  <rect x="450" y="480" width="60" height="30" rx="4" fill="rgba(139,92,246,0.1)" stroke="rgba(139,92,246,0.2)" stroke-width="1"/>
+  <rect x="520" y="480" width="60" height="30" rx="4" fill="rgba(139,92,246,0.15)" stroke="rgba(139,92,246,0.3)" stroke-width="1"/>
+  <rect x="590" y="480" width="60" height="30" rx="4" fill="rgba(139,92,246,0.1)" stroke="rgba(139,92,246,0.2)" stroke-width="1"/>
+  <rect x="660" y="480" width="60" height="30" rx="4" fill="rgba(139,92,246,0.15)" stroke="rgba(139,92,246,0.3)" stroke-width="1"/>
+  <rect x="730" y="480" width="60" height="30" rx="4" fill="rgba(139,92,246,0.1)" stroke="rgba(139,92,246,0.2)" stroke-width="1"/>
+  <rect x="800" y="480" width="60" height="30" rx="4" fill="rgba(139,92,246,0.15)" stroke="rgba(139,92,246,0.3)" stroke-width="1"/>
+  <rect x="870" y="480" width="60" height="30" rx="4" fill="rgba(139,92,246,0.1)" stroke="rgba(139,92,246,0.2)" stroke-width="1"/>
+
+  <!-- Video content area - Scene visualization -->
+  <g transform="translate(600, 250)">
+    <!-- Landscape/scene -->
+    <rect x="-200" y="-120" width="400" height="240" rx="8" fill="rgba(255,255,255,0.02)"/>
+    
+    <!-- Mountains -->
+    <path d="M-180,80 L-80,-40 L0,80Z" fill="rgba(16,185,129,0.15)" stroke="rgba(16,185,129,0.3)" stroke-width="1"/>
+    <path d="M-50,80 L50,-20 L150,80Z" fill="rgba(139,92,246,0.12)" stroke="rgba(139,92,246,0.25)" stroke-width="1"/>
+    <path d="M50,80 L120,0 L200,80Z" fill="rgba(16,185,129,0.1)" stroke="rgba(16,185,129,0.2)" stroke-width="1"/>
+    
+    <!-- Sun -->
+    <circle cx="-100" cy="-60" r="25" fill="rgba(255,107,157,0.2)"/>
+    <circle cx="-100" cy="-60" r="15" fill="rgba(255,107,157,0.15)"/>
+    
+    <!-- Ground -->
+    <rect x="-200" y="80" width="400" height="40" fill="rgba(255,255,255,0.03)"/>
+    
+    <!-- Play button overlay -->
+    <circle cx="0" cy="0" r="40" fill="rgba(0,0,0,0.3)" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+    <polygon points="-10,-20 -10,20 25,0" fill="white" opacity="0.9"/>
+  </g>
+
+  <!-- VS Badge -->
+  <g transform="translate(600, 540)">
+    <rect x="-150" y="-18" width="300" height="36" rx="18" fill="rgba(0,0,0,0.4)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+    <text x="-80" y="6" text-anchor="middle" fill="#10b981" font-family="Arial, sans-serif" font-size="14" font-weight="bold">SORA</text>
+    <text x="0" y="6" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-family="Arial, sans-serif" font-size="14">vs</text>
+    <text x="80" y="6" text-anchor="middle" fill="#8b5cf6" font-family="Arial, sans-serif" font-size="14" font-weight="bold">RUNWAY</text>
+  </g>
+
+  <!-- Top title -->
+  <text x="600" y="45" text-anchor="middle" fill="url(#textGrad)" font-family="Arial, sans-serif" font-size="20" font-weight="300" letter-spacing="6">IA GENERATIVA DE VIDEO</text>
+
+  <!-- Bottom bar -->
+  <rect x="0" y="590" width="1200" height="40" fill="rgba(0,0,0,0.3)"/>
+  <text x="60" y="615" fill="rgba(255,255,255,0.4)" font-family="Arial, sans-serif" font-size="13" font-weight="500" letter-spacing="2">IA TOOLS</text>
+  <text x="600" y="615" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-family="Arial, sans-serif" font-size="12">Análisis • Comparativas • Tutoriales</text>
+  <text x="1140" y="615" text-anchor="end" fill="rgba(255,255,255,0.4)" font-family="Arial, sans-serif" font-size="13" font-weight="500">2026</text>
+</svg>

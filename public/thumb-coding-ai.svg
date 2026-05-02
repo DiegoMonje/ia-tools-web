@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4facfe"/>
+      <stop offset="100%" style="stop-color:#00f2fe"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="400" fill="url(#bg)"/>
+  <!-- Code editor -->
+  <rect x="80" y="60" width="640" height="280" rx="16" fill="rgba(0,0,0,0.2)" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
+  <!-- Window controls -->
+  <circle cx="110" cy="85" r="6" fill="#ff5f56"/>
+  <circle cx="130" cy="85" r="6" fill="#ffbd2e"/>
+  <circle cx="150" cy="85" r="6" fill="#27ca3f"/>
+  <!-- Code lines -->
+  <rect x="100" y="110" width="200" height="10" rx="3" fill="rgba(255,255,255,0.25)"/>
+  <rect x="100" y="130" width="350" height="10" rx="3" fill="rgba(255,255,255,0.15)"/>
+  <rect x="120" y="150" width="280" height="10" rx="3" fill="rgba(255,255,255,0.12)"/>
+  <rect x="120" y="170" width="320" height="10" rx="3" fill="rgba(255,255,255,0.12)"/>
+  <rect x="120" y="190" width="200" height="10" rx="3" fill="rgba(255,255,255,0.12)"/>
+  <rect x="100" y="210" width="380" height="10" rx="3" fill="rgba(255,255,255,0.15)"/>
+  <rect x="120" y="230" width="250" height="10" rx="3" fill="rgba(255,255,255,0.12)"/>
+  <rect x="120" y="250" width="300" height="10" rx="3" fill="rgba(255,255,255,0.12)"/>
+  <rect x="100" y="270" width="180" height="10" rx="3" fill="rgba(255,255,255,0.15)"/>
+  <!-- AI suggestion highlight -->
+  <rect x="100" y="290" width="400" height="14" rx="4" fill="rgba(255,255,255,0.08)"/>
+  <rect x="100" y="310" width="200" height="10" rx="3" fill="rgba(255,255,255,0.12)"/>
+  <!-- AI sparkles -->
+  <circle cx="520" cy="140" r="8" fill="rgba(255,255,255,0.3)"/>
+  <circle cx="560" cy="110" r="5" fill="rgba(255,255,255,0.2)"/>
+  <circle cx="480" cy="100" r="6" fill="rgba(255,255,255,0.25)"/>
+  <circle cx="600" cy="150" r="4" fill="rgba(255,255,255,0.2)"/>
+  <!-- Labels -->
+  <text x="200" y="360" text-anchor="middle" fill="white" font-family="Arial" font-size="13" font-weight="bold">COPILOT X</text>
+  <text x="400" y="360" text-anchor="middle" fill="white" font-family="Arial" font-size="13" font-weight="bold">CURSOR</text>
+  <text x="600" y="360" text-anchor="middle" fill="white" font-family="Arial" font-size="13" font-weight="bold">CLAUDE CODE</text>
+</svg>

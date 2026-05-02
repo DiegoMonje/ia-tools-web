@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <rect width="1200" height="630" fill="#f8f7f4"/>
+  
+  <!-- Left section - title area -->
+  <rect x="60" y="60" width="680" height="510" rx="8" fill="#ffffff"/>
+  <rect x="60" y="60" width="680" height="4" fill="#1e3a5f"/>
+  
+  <!-- Decorative line -->
+  <rect x="60" y="100" width="80" height="2" fill="#9a7d4a"/>
+  
+  <!-- Title text (represented as shapes) -->
+  <rect x="80" y="130" width="280" height="28" rx="2" fill="#1e3a5f" opacity="0.9"/>
+  <rect x="80" y="170" width="200" height="20" rx="2" fill="#2d2d2d" opacity="0.7"/>
+  <rect x="80" y="200" width="240" height="16" rx="2" fill="#2d2d2d" opacity="0.5"/>
+  
+  <!-- Category badge -->
+  <rect x="80" y="250" width="120" height="28" rx="14" fill="#1e3a5f"/>
+  <rect x="96" y="258" width="60" height="12" rx="2" fill="#ffffff"/>
+  
+  <!-- Meta info -->
+  <rect x="80" y="300" width="180" height="12" rx="2" fill="#6b6b6b" opacity="0.6"/>
+  <rect x="280" y="300" width="100" height="12" rx="2" fill="#6b6b6b" opacity="0.6"/>
+  
+  <!-- Divider -->
+  <line x1="80" y1="340" x2="600" y2="340" stroke="#e5e5e5" stroke-width="1"/>
+  
+  <!-- Description lines -->
+  <rect x="80" y="360" width="600" height="10" rx="2" fill="#2d2d2d" opacity="0.3"/>
+  <rect x="80" y="380" width="560" height="10" rx="2" fill="#2d2d2d" opacity="0.3"/>
+  <rect x="80" y="400" width="580" height="10" rx="2" fill="#2d2d2d" opacity="0.3"/>
+  <rect x="80" y="420" width="520" height="10" rx="2" fill="#2d2d2d" opacity="0.3"/>
+  
+  <!-- Right section - accent area -->
+  <rect x="780" y="60" width="360" height="510" rx="8" fill="#1e3a5f"/>
+  
+  <!-- Abstract shapes in right section -->
+  <circle cx="960" cy="200" r="120" fill="#ffffff" opacity="0.05"/>
+  <circle cx="960" cy="200" r="80" fill="#ffffff" opacity="0.08"/>
+  <circle cx="960" cy="200" r="40" fill="#ffffff" opacity="0.12"/>
+  
+  <!-- Decorative lines in right section -->
+  <rect x="820" y="400" width="260" height="2" fill="#ffffff" opacity="0.2"/>
+  <rect x="820" y="420" width="180" height="2" fill="#ffffff" opacity="0.15"/>
+  <rect x="820" y="440" width="220" height="2" fill="#ffffff" opacity="0.15"/>
+  
+  <!-- Logo area -->
+  <rect x="840" y="480" width="240" height="4" fill="#9a7d4a"/>
+  <rect x="920" y="496" width="80" height="14" rx="2" fill="#ffffff" opacity="0.6"/>
+</svg>
