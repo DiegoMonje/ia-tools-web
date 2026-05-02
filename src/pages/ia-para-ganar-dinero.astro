@@ -1,0 +1,128 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+
+const methods = [
+  {
+    title: 'Creación de contenido con IA',
+    description: 'Usa herramientas de IA para crear borradores de artículos, guiones, newsletters, publicaciones y piezas de contenido que luego puedas editar y publicar con criterio propio.',
+    href: '/guias',
+  },
+  {
+    title: 'Marketing de afiliación',
+    description: 'Crea comparativas, reviews y guías útiles alrededor de herramientas, servicios o productos digitales que tengan programas de afiliados.',
+    href: '/comparativas',
+  },
+  {
+    title: 'Servicios para negocios',
+    description: 'Ofrece servicios como automatización, redacción, creación de imágenes, chatbots, análisis de datos o mejora de procesos para autónomos y pymes.',
+    href: '/ia-para-negocios',
+  },
+  {
+    title: 'Productos digitales',
+    description: 'Diseña plantillas, ebooks, prompts, recursos descargables o mini cursos apoyándote en IA para acelerar investigación, estructura y producción.',
+    href: '/blog',
+  },
+];
+
+const cautions = [
+  'No publiques contenido generado sin revisar datos, fuentes y tono.',
+  'No prometas ingresos garantizados: la IA acelera trabajo, pero no sustituye estrategia, distribución ni ventas.',
+  'Revisa siempre condiciones legales, derechos de uso y políticas de cada herramienta.',
+  'Valida primero una idea pequeña antes de invertir mucho tiempo o dinero.',
+];
+
+const roadmap = [
+  { step: '1', title: 'Elige un nicho', text: 'Define un público concreto y un problema específico que puedas resolver con ayuda de IA.' },
+  { step: '2', title: 'Crea una oferta simple', text: 'Empieza con un servicio, guía, plantilla o contenido que tenga utilidad clara.' },
+  { step: '3', title: 'Publica y mide', text: 'Usa SEO, redes sociales, email o comunidades para validar si hay interés real.' },
+  { step: '4', title: 'Mejora con datos', text: 'Analiza visitas, clics, leads y ventas para optimizar lo que realmente funciona.' },
+];
+---
+
+<Layout
+  title="IA para ganar dinero: ideas reales y formas prácticas de empezar"
+  description="Ideas prácticas para usar inteligencia artificial en creación de contenido, afiliación, servicios digitales y productos online sin caer en falsas promesas."
+>
+  <Header />
+
+  <main>
+    <section class="bg-hub-bg border-b border-hub-grayLighter py-16">
+      <div class="max-w-5xl mx-auto px-6">
+        <span class="inline-block text-sm font-semibold uppercase tracking-wider text-hub-accent mb-4">Monetización con IA</span>
+        <h1 class="text-4xl md:text-5xl font-bold text-hub-dark mb-5 leading-tight">
+          IA para ganar dinero: ideas prácticas sin falsas promesas
+        </h1>
+        <p class="text-lg text-hub-slate max-w-3xl leading-relaxed">
+          La inteligencia artificial puede ayudarte a crear más rápido, ahorrar tiempo y ofrecer mejores servicios, pero no garantiza ingresos por sí sola. Aquí tienes formas realistas de usar IA para construir proyectos, contenidos y ofertas con potencial de monetización.
+        </p>
+      </div>
+    </section>
+
+    <section class="py-14 bg-hub-white">
+      <div class="max-w-5xl mx-auto px-6">
+        <div class="max-w-3xl mb-8">
+          <h2 class="text-2xl md:text-3xl font-bold text-hub-dark mb-3">Formas de monetizar usando IA</h2>
+          <p class="text-hub-slate leading-relaxed">
+            La mejor estrategia es combinar IA con una habilidad real: marketing, ventas, diseño, programación, redacción, automatización o conocimiento de un sector concreto.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-5">
+          {methods.map((method) => (
+            <a href={method.href} class="group block border border-hub-grayLighter hover:border-hub-accent bg-hub-bg rounded-xl p-6 transition-colors">
+              <div class="flex items-start justify-between gap-4 mb-3">
+                <h3 class="text-xl font-bold text-hub-dark group-hover:text-hub-accent transition-colors">{method.title}</h3>
+                <span class="text-hub-accent text-xl">→</span>
+              </div>
+              <p class="text-sm text-hub-slate leading-relaxed">{method.description}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="py-14 bg-hub-bg">
+      <div class="max-w-5xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-start">
+        <div>
+          <h2 class="text-2xl md:text-3xl font-bold text-hub-dark mb-4">Ruta recomendada para empezar</h2>
+          <p class="text-hub-slate leading-relaxed mb-6">
+            Antes de crear muchas cosas, valida una idea pequeña. La IA te permite ir más rápido, pero necesitas comprobar si existe demanda real.
+          </p>
+          <a href="/herramientas-ia-gratis" class="inline-flex items-center px-5 py-3 bg-hub-accent text-white font-medium rounded-lg hover:bg-hub-accentLight transition-colors">
+            Ver herramientas para empezar gratis →
+          </a>
+        </div>
+
+        <div class="space-y-4">
+          {roadmap.map((item) => (
+            <div class="bg-hub-white border border-hub-grayLighter rounded-xl p-5">
+              <div class="flex items-start gap-4">
+                <span class="flex-shrink-0 w-9 h-9 rounded-full bg-hub-accent text-white flex items-center justify-center font-bold">{item.step}</span>
+                <div>
+                  <h3 class="font-bold text-hub-dark mb-1">{item.title}</h3>
+                  <p class="text-sm text-hub-slate leading-relaxed">{item.text}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="py-14 bg-hub-white">
+      <div class="max-w-5xl mx-auto px-6">
+        <div class="bg-hub-bg border border-hub-grayLighter rounded-2xl p-8">
+          <h2 class="text-2xl md:text-3xl font-bold text-hub-dark mb-5">Errores que debes evitar</h2>
+          <div class="grid md:grid-cols-2 gap-4">
+            {cautions.map((item) => (
+              <div class="bg-hub-white border border-hub-grayLighter rounded-lg p-4 text-sm text-hub-slate leading-relaxed">
+                {item}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
