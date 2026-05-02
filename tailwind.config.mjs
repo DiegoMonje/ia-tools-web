@@ -1,3 +1,5 @@
+import typography from '@tailwindcss/typography';
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
@@ -27,36 +29,22 @@ export default {
           error: '#dc2626',
           gold: '#b45309',
           teal: '#0f766e',
-        }
+        },
       },
       typography: {
         DEFAULT: {
           css: {
             maxWidth: '70ch',
             color: '#1e293b',
-            h1: {
-              fontWeight: '700',
-            },
-            h2: {
-              fontWeight: '600',
-              color: '#0f172a',
-            },
-            h3: {
-              fontWeight: '600',
-              color: '#0f172a',
-            },
-            h4: {
-              fontWeight: '600',
-            },
-            strong: {
-              fontWeight: '600',
-            },
+            h1: { fontWeight: '700' },
+            h2: { fontWeight: '600', color: '#0f172a' },
+            h3: { fontWeight: '600', color: '#0f172a' },
+            h4: { fontWeight: '600' },
+            strong: { fontWeight: '600' },
             a: {
               color: '#0369a1',
               textDecoration: 'underline',
-              '&:hover': {
-                color: '#0284c7',
-              },
+              '&:hover': { color: '#0284c7' },
             },
             blockquote: {
               fontStyle: 'normal',
@@ -68,7 +56,5 @@ export default {
       },
     },
   },
-  plugins: [
-    require('@tailwindcss/typography'),
-  ],
-}
+  plugins: [typography],
+};
