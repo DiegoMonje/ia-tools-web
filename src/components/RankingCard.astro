@@ -1,0 +1,30 @@
+---
+interface Props {
+  rank: number;
+  title: string;
+  category: string;
+  description: string;
+  href: string;
+}
+
+const { rank, title, category, description, href } = Astro.props;
+---
+
+<article class="group bg-hub-white border border-hub-grayLighter hover:border-hub-accent transition-colors rounded-xl p-5 shadow-sm">
+  <a href={href} class="flex gap-4 items-start">
+    <div class="flex-shrink-0 w-10 h-10 rounded-full bg-hub-accent text-white font-bold flex items-center justify-center">
+      {rank}
+    </div>
+    <div>
+      <span class="inline-block text-xs font-medium uppercase tracking-wider text-hub-accent mb-1">
+        {category}
+      </span>
+      <h3 class="text-lg font-semibold text-hub-dark group-hover:text-hub-accent transition-colors">
+        {title}
+      </h3>
+      <p class="text-sm text-hub-slate mt-1">
+        {description}
+      </p>
+    </div>
+  </a>
+</article>
