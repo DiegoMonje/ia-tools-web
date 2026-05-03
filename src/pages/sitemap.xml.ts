@@ -1,15 +1,12 @@
 import { getCollection } from 'astro:content';
 
-// ⚠️ IMPORTANTE: Cambia este dominio por el real antes de desplegar
-const siteUrl = 'https://www.tu-dominio-real.com';
-
 export async function GET() {
+  const siteUrl = import.meta.env.SITE || 'https://ia-tools-web.pages.dev';
+
   const posts = await getCollection('blog');
   
   const staticPages = [
     { url: '/', priority: '1.0', changefreq: 'daily' },
-    { url: '/sobre-nosotros', priority: '0.8', changefreq: 'monthly' },
-    { url: '/contacto', priority: '0.7', changefreq: 'monthly' },
     { url: '/aviso-legal', priority: '0.3', changefreq: 'yearly' },
     { url: '/politica-privacidad', priority: '0.3', changefreq: 'yearly' },
     { url: '/politica-cookies', priority: '0.3', changefreq: 'yearly' },
