@@ -3,7 +3,7 @@ title: "Mejor IA para ganar dinero en 2026: herramientas y estrategias reales"
 description: "Descubre las mejores herramientas de IA para ganar dinero creando contenido, servicios digitales, automatizaciones, diseños y proyectos online."
 pubDate: 2026-05-03
 updatedDate: 2026-05-03
-heroImage: "/images/mejor-ia-para-ganar-dinero.webp"
+heroImage: "/images/mejor-ia-para-ganar-dinero.svg"
 category: "Monetización IA"
 tags: ["ganar dinero con IA", "negocios online", "afiliados", "automatización", "ChatGPT"]
 author: "Equipo IA Tools"
