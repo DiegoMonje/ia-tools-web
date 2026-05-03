@@ -3,6 +3,9 @@ import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import RecommendationBox from '../../components/RecommendationBox.astro';
 import ArticleCard from '../../components/ArticleCard.astro';
+import AffiliateBox from '../../components/AffiliateBox.astro';
+import RelatedLinks from '../../components/RelatedLinks.astro';
+import { affiliateTools } from '../../data/affiliateTools';
 import { getCollection } from 'astro:content';
 import { slugify } from '../../utils/slugify';
 
@@ -28,6 +31,16 @@ const allPosts = await getCollection('blog');
 const relatedPosts = allPosts
   .filter((p) => p.data.category === post.data.category && p.slug !== post.slug)
   .slice(0, 3);
+
+const recommendedTool = affiliateTools.find((tool) => {
+  const searchableText = `${post.data.title} ${post.data.description} ${post.data.category} ${post.data.tags.join(' ')}`.toLowerCase();
+
+  if (searchableText.includes('claude')) return tool.name === 'Claude';
+  if (searchableText.includes('canva') || searchableText.includes('diseño') || searchableText.includes('imagen')) return tool.name === 'Canva IA';
+  if (searchableText.includes('código') || searchableText.includes('program')) return tool.name === 'GitHub Copilot';
+
+  return tool.name === 'ChatGPT';
+}) || affiliateTools[0];
 
 const faqSchema = post.data.faq?.length
   ? post.data.faq.map((f) => ({
@@ -145,8 +158,18 @@ const formatDate = (date: Date) => {
         </figure>
       )}
 
+      <div class="mb-10">
+        <AffiliateBox tool={recommendedTool} />
+      </div>
+
       <div class="prose prose-lg max-w-none prose-headings:font-semibold prose-headings:text-hub-dark prose-a:text-hub-accent prose-a:no-underline hover:prose-a:underline prose-strong:font-semibold prose-p:text-hub-darkMid prose-p:leading-relaxed prose-blockquote:border-l-hub-accent prose-blockquote:text-hub-slate">
         <Content />
+      </div>
+
+      <RelatedLinks />
+
+      <div class="mt-10">
+        <AffiliateBox tool={recommendedTool} />
       </div>
 
       {post.data.tags.length > 0 && (
