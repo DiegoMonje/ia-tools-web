@@ -5,33 +5,146 @@ import AffiliateBox from '../components/AffiliateBox.astro';
 import { affiliateTools, affiliateDisclosure } from '../data/affiliateTools';
 
 const useCases = [
-  { title: 'Para escribir y estudiar', tool: 'ChatGPT', description: 'Ideal para resúmenes, ideas, correos, guiones y aprendizaje guiado.' },
-  { title: 'Para análisis profundo', tool: 'Claude', description: 'Muy útil para revisar documentos largos, comparar opciones y crear estrategias.' },
-  { title: 'Para crear imágenes', tool: 'Midjourney', description: 'Una opción potente para marcas, miniaturas, anuncios y creatividad visual.' },
-  { title: 'Para programar', tool: 'GitHub Copilot', description: 'Ayuda a escribir código, corregir errores y acelerar tareas técnicas.' },
-  { title: 'Para diseño rápido', tool: 'Canva IA', description: 'Perfecto para redes sociales, presentaciones, piezas comerciales y branding.' },
+  {
+    title: 'Para escribir artículos y crear contenido',
+    tool: 'ChatGPT',
+    description: 'La opción más versátil para ideas, estructuras SEO, borradores, emails, guiones y respuestas rápidas.',
+    href: '/blog/mejor-ia-para-escribir-articulos-2026',
+  },
+  {
+    title: 'Para analizar documentos y textos largos',
+    tool: 'Claude',
+    description: 'Muy útil para revisar textos extensos, resumir documentos, mejorar claridad y trabajar con más contexto.',
+    href: '/blog/chatgpt-vs-claude-2026',
+  },
+  {
+    title: 'Para crear imágenes y contenido visual',
+    tool: 'Midjourney / Canva IA',
+    description: 'Buenas opciones para crear miniaturas, posts, banners, pines, imágenes de marca y recursos visuales.',
+    href: '/herramientas-ia-gratis',
+  },
+  {
+    title: 'Para autónomos y negocios',
+    tool: 'ChatGPT + Canva IA + automatización',
+    description: 'Combinación útil para presupuestos, emails, contenido, atención al cliente y mejora de procesos.',
+    href: '/blog/ia-para-autonomos-2026',
+  },
+  {
+    title: 'Para programar y documentar código',
+    tool: 'GitHub Copilot',
+    description: 'Ayuda a escribir código, documentar proyectos y acelerar tareas técnicas si trabajas como desarrollador.',
+    href: '/ia-para-negocios',
+  },
 ];
+
+const decisionCriteria = [
+  'Empieza por el problema que quieres resolver, no por la herramienta más popular.',
+  'Prueba primero planes gratuitos o freemium antes de pagar.',
+  'Valora si la herramienta ahorra tiempo, mejora calidad o ayuda a generar ingresos.',
+  'Revisa límites, privacidad, condiciones de uso y precios actualizados en la web oficial.',
+];
+
+const moneyRoutes = [
+  { title: 'Cómo ganar dinero con IA', href: '/blog/mejor-ia-para-ganar-dinero-2026', description: 'Ideas reales para convertir herramientas IA en servicios, contenido y proyectos online.' },
+  { title: 'IA para autónomos', href: '/blog/ia-para-autonomos-2026', description: 'Herramientas y flujos para ahorrar tiempo, captar clientes y mejorar la productividad.' },
+  { title: 'ChatGPT vs Claude', href: '/blog/chatgpt-vs-claude-2026', description: 'Comparativa para decidir qué asistente IA encaja mejor con tu forma de trabajar.' },
+  { title: 'IA para escribir artículos', href: '/blog/mejor-ia-para-escribir-articulos-2026', description: 'Guía para crear contenidos SEO, estructuras, tablas, FAQs y CTAs con IA.' },
+];
+
+const faqs = [
+  {
+    question: '¿Cuál es la mejor herramienta de IA para empezar?',
+    answer: 'Para la mayoría de usuarios, ChatGPT es la opción más versátil para empezar porque sirve para escribir, idear, resumir, crear contenido y mejorar procesos diarios.',
+  },
+  {
+    question: '¿Qué herramienta de IA es mejor para ganar dinero?',
+    answer: 'No hay una única herramienta. ChatGPT ayuda a crear contenido y servicios, Claude mejora análisis y textos largos, Canva IA ayuda con diseño y GitHub Copilot puede ser útil para servicios técnicos.',
+  },
+  {
+    question: '¿Merece la pena pagar por una herramienta de IA?',
+    answer: 'Solo merece la pena si la herramienta te ahorra tiempo, mejora tu trabajo o te ayuda a generar ingresos. Lo recomendable es probar primero planes gratuitos y pagar cuando tengas un uso claro.',
+  },
+  {
+    question: '¿Puedo usar estas herramientas para un blog de afiliados?',
+    answer: 'Sí. Puedes usarlas para investigar, estructurar contenidos, crear comparativas y mejorar textos, pero siempre debes revisar la información y aportar criterio propio.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.answer,
+    },
+  })),
+};
 ---
 
 <Layout
-  title="Mejores herramientas de IA para ganar tiempo y dinero en 2026"
-  description="Ranking práctico de herramientas de inteligencia artificial para escribir, vender, diseñar, programar, automatizar tareas y crear nuevos ingresos online."
+  title="Mejores herramientas de IA en 2026: ranking, comparativa y guía para elegir"
+  description="Ranking práctico de herramientas de inteligencia artificial para escribir, diseñar, automatizar tareas, programar, mejorar negocios y crear nuevos ingresos online."
 >
   <Header />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
   <main class="bg-hub-bg">
     <section class="py-16 bg-hub-dark text-white">
       <div class="max-w-5xl mx-auto px-6">
-        <span class="inline-block text-sm font-semibold uppercase tracking-wider text-hub-grayLight mb-4">Ranking monetizable</span>
-        <h1 class="text-4xl md:text-5xl font-bold mb-6">Mejores herramientas de IA para ganar tiempo y dinero</h1>
+        <span class="inline-block text-sm font-semibold uppercase tracking-wider text-hub-grayLight mb-4">Ranking actualizado</span>
+        <h1 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">Mejores herramientas de IA para trabajar, crear contenido y ganar tiempo</h1>
         <p class="text-lg text-hub-grayLight max-w-3xl leading-relaxed">
-          Selección práctica de herramientas IA para crear contenido, automatizar tareas, mejorar negocios y lanzar servicios digitales con poca inversión inicial.
+          Comparativa práctica para elegir herramientas IA según tu objetivo: escribir artículos, crear imágenes, automatizar tareas, analizar documentos, programar, mejorar un negocio o lanzar proyectos online.
         </p>
+        <div class="flex flex-col sm:flex-row gap-4 mt-8">
+          <a href="#ranking" class="px-6 py-3 bg-hub-accent text-white rounded-lg font-semibold hover:bg-hub-accentLight transition-colors text-center">
+            Ver ranking de herramientas
+          </a>
+          <a href="/blog/mejor-ia-para-ganar-dinero-2026" class="px-6 py-3 bg-white text-hub-dark rounded-lg font-semibold hover:bg-hub-grayLighter transition-colors text-center">
+            Ver cómo monetizar con IA
+          </a>
+        </div>
         <p class="text-xs text-hub-grayLight mt-6 max-w-3xl">{affiliateDisclosure}</p>
       </div>
     </section>
 
-    <section class="py-12">
+    <section id="ranking" class="py-12 bg-hub-white">
+      <div class="max-w-5xl mx-auto px-6">
+        <div class="max-w-3xl mb-8">
+          <span class="text-sm font-semibold uppercase tracking-wider text-hub-accent">Comparativa rápida</span>
+          <h2 class="text-2xl md:text-3xl font-bold text-hub-dark mt-2 mb-3">Ranking de herramientas IA recomendadas</h2>
+          <p class="text-hub-slate leading-relaxed">
+            Esta tabla te ayuda a decidir rápido qué herramienta probar según el uso principal. Revisa siempre precios y condiciones en la web oficial antes de pagar.
+          </p>
+        </div>
+
+        <div class="overflow-hidden border border-hub-grayLighter rounded-xl bg-hub-white">
+          <div class="grid grid-cols-1 md:grid-cols-5 bg-hub-bg text-sm font-semibold text-hub-dark">
+            <div class="p-4">Herramienta</div>
+            <div class="p-4">Categoría</div>
+            <div class="p-4 md:col-span-2">Mejor para</div>
+            <div class="p-4">Acción</div>
+          </div>
+          {affiliateTools.map((tool) => (
+            <div class="grid grid-cols-1 md:grid-cols-5 border-t border-hub-grayLighter text-sm">
+              <div class="p-4 font-bold text-hub-dark">{tool.name}</div>
+              <div class="p-4 text-hub-slate">{tool.category}</div>
+              <div class="p-4 md:col-span-2 text-hub-slate">{tool.bestFor}</div>
+              <div class="p-4">
+                <a href={tool.affiliateUrl} target="_blank" rel="nofollow sponsored" class="inline-flex px-4 py-2 bg-hub-accent text-white rounded-lg font-semibold hover:bg-hub-accentLight transition-colors">
+                  {tool.cta}
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="py-12 bg-hub-bg">
       <div class="max-w-5xl mx-auto px-6 grid lg:grid-cols-3 gap-6">
         {affiliateTools.map((tool) => (
           <AffiliateBox tool={tool} />
@@ -41,28 +154,105 @@ const useCases = [
 
     <section class="py-14 bg-hub-white">
       <div class="max-w-5xl mx-auto px-6">
-        <h2 class="text-3xl font-bold text-hub-dark mb-8">Qué herramienta elegir según tu objetivo</h2>
+        <div class="max-w-3xl mb-8">
+          <span class="text-sm font-semibold uppercase tracking-wider text-hub-accent">Elige por objetivo</span>
+          <h2 class="text-3xl font-bold text-hub-dark mt-2 mb-3">Qué herramienta elegir según lo que quieres conseguir</h2>
+          <p class="text-hub-slate leading-relaxed">
+            La mejor herramienta de IA no es la más famosa, sino la que resuelve mejor tu caso concreto. Aquí tienes rutas rápidas para decidir sin perder tiempo.
+          </p>
+        </div>
+
         <div class="grid md:grid-cols-2 gap-5">
           {useCases.map((item) => (
-            <div class="border border-hub-grayLighter rounded-xl p-6 bg-hub-bg">
-              <h3 class="text-xl font-bold text-hub-dark mb-2">{item.title}</h3>
+            <a href={item.href} class="group block border border-hub-grayLighter rounded-xl p-6 bg-hub-bg hover:border-hub-accent transition-colors">
+              <h3 class="text-xl font-bold text-hub-dark group-hover:text-hub-accent transition-colors mb-2">{item.title}</h3>
               <p class="text-sm text-hub-slate mb-3">Herramienta recomendada: <strong>{item.tool}</strong></p>
-              <p class="text-sm text-hub-slate leading-relaxed">{item.description}</p>
+              <p class="text-sm text-hub-slate leading-relaxed mb-4">{item.description}</p>
+              <span class="text-sm font-semibold text-hub-accent">Ver guía relacionada →</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="py-14 bg-hub-bg">
+      <div class="max-w-5xl mx-auto px-6 grid lg:grid-cols-2 gap-10 items-start">
+        <div>
+          <span class="text-sm font-semibold uppercase tracking-wider text-hub-accent">Cómo elegir bien</span>
+          <h2 class="text-3xl font-bold text-hub-dark mt-2 mb-4">Criterios para elegir una herramienta IA sin tirar el dinero</h2>
+          <p class="text-hub-slate leading-relaxed mb-6">
+            Muchas herramientas parecen atractivas, pero no todas merecen pagar. Antes de contratar una suscripción, valida si realmente te ayuda a producir más, ahorrar tiempo o conseguir mejores resultados.
+          </p>
+          <a href="/herramientas-ia-gratis" class="inline-flex px-5 py-3 bg-hub-accent text-white rounded-lg font-semibold hover:bg-hub-accentLight transition-colors">
+            Ver herramientas IA gratis
+          </a>
+        </div>
+
+        <div class="space-y-4">
+          {decisionCriteria.map((item, index) => (
+            <div class="bg-hub-white border border-hub-grayLighter rounded-xl p-5">
+              <div class="flex gap-4 items-start">
+                <span class="flex-shrink-0 w-9 h-9 rounded-full bg-hub-accent text-white flex items-center justify-center font-bold">{index + 1}</span>
+                <p class="text-hub-slate leading-relaxed">{item}</p>
+              </div>
             </div>
           ))}
         </div>
       </div>
     </section>
 
+    <section class="py-14 bg-hub-white">
+      <div class="max-w-5xl mx-auto px-6">
+        <div class="max-w-3xl mb-8">
+          <span class="text-sm font-semibold uppercase tracking-wider text-hub-accent">Guías relacionadas</span>
+          <h2 class="text-3xl font-bold text-hub-dark mt-2 mb-3">Sigue aprendiendo antes de elegir</h2>
+          <p class="text-hub-slate leading-relaxed">
+            Estas guías te ayudan a pasar de “quiero usar IA” a “sé qué herramienta probar y para qué”.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-5">
+          {moneyRoutes.map((item) => (
+            <a href={item.href} class="group block bg-hub-bg border border-hub-grayLighter hover:border-hub-accent rounded-xl p-6 transition-colors">
+              <h3 class="text-xl font-bold text-hub-dark group-hover:text-hub-accent transition-colors mb-2">{item.title}</h3>
+              <p class="text-sm text-hub-slate leading-relaxed mb-4">{item.description}</p>
+              <span class="text-sm font-semibold text-hub-accent">Leer guía →</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="py-14 bg-hub-bg">
+      <div class="max-w-5xl mx-auto px-6">
+        <div class="bg-hub-white border border-hub-grayLighter rounded-2xl p-8">
+          <h2 class="text-3xl font-bold text-hub-dark mb-6">Preguntas frecuentes</h2>
+          <div class="space-y-6">
+            {faqs.map((faq) => (
+              <div class="border-b border-hub-grayLighter pb-6 last:border-0 last:pb-0">
+                <h3 class="text-lg font-bold text-hub-dark mb-2">{faq.question}</h3>
+                <p class="text-hub-slate leading-relaxed">{faq.answer}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="py-14 bg-hub-accent text-white">
       <div class="max-w-4xl mx-auto px-6 text-center">
-        <h2 class="text-3xl font-bold mb-4">Empieza por una herramienta y crea un flujo rentable</h2>
+        <h2 class="text-3xl font-bold mb-4">Empieza por una herramienta y crea un flujo útil</h2>
         <p class="text-hub-grayLight mb-8">
-          No necesitas usar veinte aplicaciones. Elige una herramienta principal, crea contenido o servicios concretos y mide qué convierte mejor.
+          No necesitas usar veinte aplicaciones. Elige una herramienta principal, pruébala con un objetivo concreto y mide si te ahorra tiempo o te ayuda a generar mejores resultados.
         </p>
-        <a href="/ia-para-ganar-dinero" class="inline-block px-6 py-3 bg-white text-hub-accent rounded-lg font-semibold hover:bg-hub-grayLighter">
-          Ver ideas para ganar dinero con IA
-        </a>
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+          <a href="#ranking" class="inline-block px-6 py-3 bg-white text-hub-accent rounded-lg font-semibold hover:bg-hub-grayLighter">
+            Volver al ranking
+          </a>
+          <a href="/blog/mejor-ia-para-ganar-dinero-2026" class="inline-block px-6 py-3 bg-hub-dark text-white rounded-lg font-semibold hover:bg-hub-darkLight">
+            Ver ideas para monetizar
+          </a>
+        </div>
       </div>
     </section>
   </main>
