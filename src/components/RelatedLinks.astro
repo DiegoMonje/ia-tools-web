@@ -1,0 +1,20 @@
+---
+const links = [
+  { href: '/mejores-herramientas-ia', title: 'Mejores herramientas de IA', description: 'Ranking principal con herramientas recomendadas para escribir, diseñar, programar y automatizar.' },
+  { href: '/ia-para-ganar-dinero', title: 'IA para ganar dinero', description: 'Ideas prácticas para convertir herramientas IA en servicios, contenidos y proyectos online.' },
+  { href: '/herramientas-ia-gratis', title: 'Herramientas IA gratis', description: 'Selección de herramientas gratuitas para empezar sin inversión inicial.' },
+  { href: '/ia-para-negocios', title: 'IA para negocios', description: 'Aplicaciones de IA para autónomos, pymes y equipos que quieren ahorrar tiempo.' },
+];
+---
+
+<section class="my-10 rounded-2xl border border-hub-grayLighter bg-hub-bg p-6">
+  <h2 class="text-2xl font-bold text-hub-dark mb-4">También te puede interesar</h2>
+  <div class="grid md:grid-cols-2 gap-4">
+    {links.map((link) => (
+      <a href={link.href} class="block rounded-xl bg-white border border-hub-grayLighter p-5 hover:border-hub-accent transition-colors">
+        <h3 class="font-bold text-hub-dark mb-2">{link.title}</h3>
+        <p class="text-sm text-hub-slate leading-relaxed">{link.description}</p>
+      </a>
+    ))}
+  </div>
+</section>
