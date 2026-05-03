@@ -25,12 +25,33 @@ const categories = [
   { name: 'Comparativas', slug: 'ia-de-texto', count: 10 },
 ];
 
+const quickStart = [
+  {
+    title: 'Quiero elegir una herramienta IA',
+    description: 'Ranking principal con opciones para escribir, crear imágenes, automatizar tareas, programar y trabajar más rápido.',
+    href: '/mejores-herramientas-ia',
+    cta: 'Ver ranking recomendado',
+  },
+  {
+    title: 'Quiero ganar dinero con IA',
+    description: 'Ideas prácticas para convertir herramientas de IA en contenidos, servicios digitales, afiliación y proyectos online.',
+    href: '/blog/mejor-ia-para-ganar-dinero-2026',
+    cta: 'Ver estrategias rentables',
+  },
+  {
+    title: 'Soy autónomo o tengo un negocio',
+    description: 'Herramientas para ahorrar tiempo, crear propuestas, responder clientes y mejorar la productividad diaria.',
+    href: '/blog/ia-para-autonomos-2026',
+    cta: 'Ver IA para negocios',
+  },
+];
+
 const topTools = [
-  { title: 'ChatGPT-5', category: 'Chatbot', description: 'El chatbot más popular y versátil', href: '/blog/chatgpt-5-guia-completa', rating: '4.8' },
-  { title: 'Claude 4', category: 'Chatbot', description: 'Excelente para análisis profundos', href: '/blog/claude-4-vs-chatgpt-5', rating: '4.7' },
-  { title: 'Midjourney v7', category: 'Imágenes', description: 'La mejor calidad de imagen', href: '/blog/midjourney-vs-dalle', rating: '4.9' },
-  { title: 'DALL-E 4', category: 'Imágenes', description: 'Integrado con ChatGPT', href: '/blog/dalle-4-analisis', rating: '4.5' },
-  { title: 'GitHub Copilot', category: 'Código', description: 'El favorito de desarrolladores', href: '/blog/github-copilot-vs-cursor-vs-claude-code', rating: '4.6' },
+  { title: 'ChatGPT', category: 'Chatbot', description: 'La opción más versátil para escribir, idear, resumir y crear contenido', href: '/blog/mejor-ia-para-escribir-articulos-2026', rating: '4.8' },
+  { title: 'Claude', category: 'Chatbot', description: 'Muy bueno para analizar textos largos y mejorar calidad editorial', href: '/blog/chatgpt-vs-claude-2026', rating: '4.7' },
+  { title: 'Canva IA', category: 'Diseño', description: 'Ideal para crear imágenes, posts, pines y recursos visuales rápidamente', href: '/mejores-herramientas-ia', rating: '4.5' },
+  { title: 'GitHub Copilot', category: 'Código', description: 'Ayuda a programar, documentar y acelerar tareas técnicas', href: '/mejores-herramientas-ia', rating: '4.6' },
+  { title: 'Midjourney', category: 'Imágenes', description: 'Herramienta potente para creatividad visual y contenido de marca', href: '/mejores-herramientas-ia', rating: '4.9' },
 ];
 
 const seoCategories = [
@@ -48,43 +69,97 @@ const seoCategories = [
   },
   {
     title: 'IA para ganar dinero',
-    href: '/ia-para-ganar-dinero',
+    href: '/blog/mejor-ia-para-ganar-dinero-2026',
     keyword: 'monetización con IA',
     description: 'Ideas prácticas para usar herramientas de IA en contenidos, afiliación, automatizaciones, servicios digitales y proyectos online.'
   },
   {
-    title: 'IA para productividad',
-    href: '/categoria/productividad',
-    keyword: 'productividad con IA',
-    description: 'Apps y flujos de trabajo para organizar tareas, resumir información, crear documentos y trabajar más rápido cada día.'
+    title: 'IA para escribir artículos',
+    href: '/blog/mejor-ia-para-escribir-articulos-2026',
+    keyword: 'contenido con IA',
+    description: 'Guía para elegir herramientas de IA que ayudan a crear artículos, estructuras SEO, títulos, FAQs y contenidos monetizables.'
   },
 ];
 
 const comparisonTools = [
-  { title: 'Claude 4 vs ChatGPT 5', category: 'Comparativa', href: '/blog/claude-4-vs-chatgpt-5', badge: 'Popular' },
-  { title: 'Midjourney vs DALL-E 4', category: 'Comparativa', href: '/blog/midjourney-vs-dalle', badge: 'Mejor reviewed' },
-  { title: 'Sora vs Runway', category: 'Video IA', href: '/blog/sora-vs-runway', badge: 'Nuevo' },
-  { title: 'ElevenLabs vs PlayHT', category: 'Audio', href: '/blog/elevenlabs-vs-playht', badge: 'Alta calidad' },
+  { title: 'ChatGPT vs Claude', category: 'Comparativa', href: '/blog/chatgpt-vs-claude-2026', badge: 'Popular' },
+  { title: 'Mejor IA para escribir artículos', category: 'Contenido SEO', href: '/blog/mejor-ia-para-escribir-articulos-2026', badge: 'Guía práctica' },
+  { title: 'Mejor IA para ganar dinero', category: 'Monetización', href: '/blog/mejor-ia-para-ganar-dinero-2026', badge: 'Negocio' },
+  { title: 'IA para autónomos', category: 'Productividad', href: '/blog/ia-para-autonomos-2026', badge: 'Negocios' },
 ];
 ---
 
 <Layout
-  title="Mejores herramientas de IA 2026: guías, rankings y comparativas"
-  description="Descubre las mejores herramientas de inteligencia artificial para trabajar, crear contenido, automatizar tareas, programar y mejorar tu productividad. Comparativas, guías y análisis prácticos."
+  title="Mejores herramientas de IA 2026: rankings, comparativas y guías para ganar tiempo"
+  description="Compara herramientas de inteligencia artificial para escribir, crear contenido, automatizar tareas, trabajar mejor y encontrar opciones con potencial de monetización."
 >
   <Header />
   
   <main>
     <!-- Hero Section -->
     <HubHero categories={categories} />
-    
-    <!-- Featured Tools Section -->
+
+    <!-- Primary Conversion Section -->
+    <section class="py-12 bg-hub-dark text-white">
+      <div class="max-w-5xl mx-auto px-6">
+        <div class="grid lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-7">
+            <span class="inline-block text-sm font-semibold uppercase tracking-wider text-hub-grayLight mb-3">Empieza aquí</span>
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Elige la herramienta IA correcta según tu objetivo</h2>
+            <p class="text-hub-grayLight leading-relaxed mb-6">
+              No pierdas tiempo probando decenas de aplicaciones. Hemos organizado las mejores herramientas de IA por uso: escribir, diseñar, automatizar, programar, mejorar negocios y crear ingresos online.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4">
+              <a href="/mejores-herramientas-ia" class="px-6 py-3 bg-hub-accent text-white rounded-lg font-semibold hover:bg-hub-accentLight transition-colors text-center">
+                Ver mejores herramientas IA
+              </a>
+              <a href="/blog/chatgpt-vs-claude-2026" class="px-6 py-3 bg-white text-hub-dark rounded-lg font-semibold hover:bg-hub-grayLighter transition-colors text-center">
+                Comparar ChatGPT vs Claude
+              </a>
+            </div>
+          </div>
+          <div class="lg:col-span-5 bg-hub-darkLight rounded-2xl p-6 border border-hub-slate">
+            <h3 class="text-xl font-bold mb-4">Ruta rápida</h3>
+            <ul class="space-y-3 text-sm text-hub-grayLight">
+              <li>✅ Si quieres escribir: empieza por ChatGPT o Claude.</li>
+              <li>✅ Si quieres vender servicios: revisa IA para autónomos.</li>
+              <li>✅ Si quieres monetizar: empieza por herramientas IA para ganar dinero.</li>
+              <li>✅ Si no sabes qué elegir: mira el ranking completo.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Start Section -->
     <section class="py-12 bg-hub-white">
       <div class="max-w-5xl mx-auto px-6">
-        <div class="flex items-center justify-between mb-8">
-          <h2 class="text-2xl font-bold text-hub-dark">Herramientas IA Destacadas</h2>
-          <a href="/blog" class="text-sm font-medium text-hub-accent hover:underline">
-            Ver todas →
+        <div class="max-w-3xl mb-8">
+          <span class="text-sm font-semibold uppercase tracking-wider text-hub-accent">Decide más rápido</span>
+          <h2 class="text-2xl md:text-3xl font-bold text-hub-dark mt-2 mb-3">¿Qué quieres conseguir con la IA?</h2>
+          <p class="text-hub-slate leading-relaxed">
+            Empieza por tu objetivo principal. Cada ruta te lleva a una guía o ranking pensado para tomar una decisión y probar herramientas útiles sin perder tiempo.
+          </p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-5">
+          {quickStart.map((item) => (
+            <a href={item.href} class="group block bg-hub-bg border border-hub-grayLighter hover:border-hub-accent rounded-xl p-6 transition-colors">
+              <h3 class="text-xl font-bold text-hub-dark group-hover:text-hub-accent transition-colors mb-3">{item.title}</h3>
+              <p class="text-sm text-hub-slate leading-relaxed mb-5">{item.description}</p>
+              <span class="inline-flex items-center text-sm font-semibold text-hub-accent">{item.cta} →</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+    
+    <!-- Featured Tools Section -->
+    <section class="py-12 bg-hub-white border-t border-hub-grayLighter">
+      <div class="max-w-5xl mx-auto px-6">
+        <div class="flex items-center justify-between mb-8 gap-4">
+          <h2 class="text-2xl font-bold text-hub-dark">Análisis y guías destacadas</h2>
+          <a href="/mejores-herramientas-ia" class="text-sm font-medium text-hub-accent hover:underline">
+            Comparar herramientas IA →
           </a>
         </div>
         
@@ -95,7 +170,7 @@ const comparisonTools = [
             category={featuredPost.data.category}
             image={featuredPost.data.heroImage}
             href={`/blog/${featuredPost.slug}`}
-            cta="Ver análisis"
+            cta="Ver herramienta recomendada"
             featured
           />
           {sortedPosts.slice(1, 5).map((post) => (
@@ -105,7 +180,7 @@ const comparisonTools = [
               category={post.data.category}
               image={post.data.heroImage}
               href={`/blog/${post.slug}`}
-              cta="Ver análisis"
+              cta="Ver guía"
             />
           ))}
         </div>
@@ -115,7 +190,7 @@ const comparisonTools = [
     <!-- Categories Section -->
     <section class="py-12 bg-hub-bg">
       <div class="max-w-5xl mx-auto px-6">
-        <h2 class="text-2xl font-bold text-hub-dark mb-8 text-center">Explorar por Categoría</h2>
+        <h2 class="text-2xl font-bold text-hub-dark mb-8 text-center">Explorar por categoría</h2>
         <CategoryHubCard categories={categories} />
       </div>
     </section>
@@ -159,7 +234,12 @@ const comparisonTools = [
     <!-- Rankings Section -->
     <section class="py-12 bg-hub-bg">
       <div class="max-w-5xl mx-auto px-6">
-        <h2 class="text-2xl font-bold text-hub-dark mb-8">Top Herramientas IA</h2>
+        <div class="flex items-center justify-between mb-8 gap-4">
+          <h2 class="text-2xl font-bold text-hub-dark">Top herramientas IA para empezar</h2>
+          <a href="/mejores-herramientas-ia" class="text-sm font-semibold text-hub-accent hover:underline">
+            Ver ranking completo →
+          </a>
+        </div>
         
         <div class="grid md:grid-cols-2 gap-4">
           {topTools.map((tool, index) => (
@@ -178,10 +258,10 @@ const comparisonTools = [
     <!-- Latest Articles Section -->
     <section class="py-12 bg-hub-white">
       <div class="max-w-5xl mx-auto px-6">
-        <div class="flex items-center justify-between mb-8">
-          <h2 class="text-2xl font-bold text-hub-dark">Últimos Artículos</h2>
+        <div class="flex items-center justify-between mb-8 gap-4">
+          <h2 class="text-2xl font-bold text-hub-dark">Últimos artículos para aprender y decidir</h2>
           <a href="/blog" class="text-sm font-medium text-hub-accent hover:underline">
-            Ver todos →
+            Ver todos los artículos →
           </a>
         </div>
         
@@ -196,9 +276,9 @@ const comparisonTools = [
     <!-- Comparison CTA -->
     <section class="py-12 bg-hub-accent">
       <div class="max-w-5xl mx-auto px-6 text-center">
-        <h2 class="text-2xl font-bold text-white mb-4">¿Necesitas Comparar Herramientas?</h2>
+        <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">Compara antes de pagar por una herramienta IA</h2>
         <p class="text-hub-grayLight mb-8 max-w-2xl mx-auto">
-          Encuentra la mejor herramienta para tu caso de uso. Nuestras comparativas detalladas te ayudan a decidir.
+          Revisa guías y comparativas antes de elegir. Te ayudamos a decidir qué herramienta encaja mejor con tu trabajo, negocio o proyecto online.
         </p>
         <div class="flex flex-wrap justify-center gap-4">
           {comparisonTools.map((tool) => (
@@ -213,9 +293,10 @@ const comparisonTools = [
     <!-- Newsletter -->
     <section class="py-16 bg-hub-white">
       <div class="max-w-3xl mx-auto px-6 text-center">
-        <h2 class="text-2xl font-bold text-hub-dark mb-3">Recibe las Mejores Herramientas de IA</h2>
+        <span class="text-sm font-semibold uppercase tracking-wider text-hub-accent">Recurso gratuito</span>
+        <h2 class="text-2xl md:text-3xl font-bold text-hub-dark mt-2 mb-3">Descarga la lista de herramientas IA para trabajar más rápido</h2>
         <p class="text-hub-slate mb-8">
-          Guías, comparativas y novedades directamente en tu email cada semana.
+          Recibe una selección práctica de herramientas IA para escribir, crear contenido, automatizar tareas y encontrar oportunidades de monetización.
         </p>
         <form class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
           <input 
@@ -228,11 +309,11 @@ const comparisonTools = [
             type="submit"
             class="px-8 py-3 bg-hub-accent text-white font-medium hover:bg-hub-accentLight transition-colors rounded-lg whitespace-nowrap"
           >
-            Suscribirme
+            Descargar gratis
           </button>
         </form>
         <p class="text-xs text-hub-gray mt-4">
-          No spam. Solo contenido de valor. Cancela cuando quieras.
+          Sin spam. Solo guías, comparativas y recursos útiles. Puedes darte de baja cuando quieras.
         </p>
       </div>
     </section>
