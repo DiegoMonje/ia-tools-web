@@ -144,5 +144,25 @@ const ogImage = image.startsWith('http') ? image : new URL(image, siteUrl).toStr
       </div>
     </div>
   </footer>
+
+  <script is:inline>
+    window.dataLayer = window.dataLayer || [];
+
+    document.addEventListener('click', function (event) {
+      const link = event.target.closest('[data-affiliate-tool]');
+      if (!link) return;
+
+      window.dataLayer.push({
+        event: 'affiliate_click',
+        affiliate_tool: link.dataset.affiliateTool,
+        affiliate_name: link.dataset.affiliateName,
+        affiliate_program: link.dataset.affiliateProgram,
+        affiliate_tracking_id: link.dataset.affiliateTrackingId,
+        affiliate_placement: link.dataset.affiliatePlacement,
+        affiliate_url: link.href,
+        page_path: window.location.pathname,
+      });
+    });
+  </script>
 </body>
 </html>
