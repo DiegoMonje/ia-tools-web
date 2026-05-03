@@ -1,10 +1,23 @@
 ---
 import { affiliateDisclosure } from '../data/affiliateTools';
 const { tool, placement = 'affiliate_box' } = Astro.props;
+const linkLabel = tool.isAffiliate ? 'Enlace patrocinado' : 'Enlace externo';
+const disclosureText = tool.isAffiliate
+  ? affiliateDisclosure
+  : 'Enlace externo a la web oficial de la herramienta. Revisa precios y condiciones antes de contratar.';
 ---
 
 <div class="border border-hub-grayLighter rounded-xl p-6 bg-hub-bg">
-  <h3 class="text-lg font-bold mb-2">{tool.name}</h3>
+  <div class="flex items-start justify-between gap-4 mb-2">
+    <h3 class="text-lg font-bold">{tool.name}</h3>
+    <span class:list={[
+      'text-[11px] font-semibold uppercase tracking-wide px-2 py-1 rounded-full',
+      tool.isAffiliate ? 'bg-hub-accent text-white' : 'bg-hub-white text-hub-slate border border-hub-grayLighter'
+    ]}>
+      {linkLabel}
+    </span>
+  </div>
+
   <p class="text-sm text-hub-slate mb-2">{tool.bestFor}</p>
   <p class="text-sm mb-3"><strong>Precio:</strong> {tool.price}</p>
   <p class="text-sm mb-4"><strong>Valoración:</strong> {tool.rating} ⭐</p>
@@ -12,16 +25,17 @@ const { tool, placement = 'affiliate_box' } = Astro.props;
   <a
     href={tool.affiliateUrl}
     target="_blank"
-    rel={tool.isAffiliate ? 'nofollow sponsored' : 'nofollow noopener'}
+    rel={tool.isAffiliate ? 'nofollow sponsored noopener' : 'nofollow noopener'}
     data-affiliate-tool={tool.id}
     data-affiliate-name={tool.name}
     data-affiliate-placement={placement}
     data-affiliate-program={tool.affiliateProgram}
     data-affiliate-tracking-id={tool.trackingId}
+    data-affiliate-status={tool.isAffiliate ? 'active' : 'pending'}
     class="inline-block px-5 py-3 bg-hub-accent text-white rounded-lg font-medium hover:bg-hub-accentLight"
   >
     {tool.cta}
   </a>
 
-  <p class="text-xs text-hub-gray mt-4">{affiliateDisclosure}</p>
+  <p class="text-xs text-hub-gray mt-4">{disclosureText}</p>
 </div>
