@@ -1,0 +1,69 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import AffiliateBox from '../components/AffiliateBox.astro';
+import { affiliateTools, affiliateDisclosure } from '../data/affiliateTools';
+
+const useCases = [
+  { title: 'Para escribir y estudiar', tool: 'ChatGPT', description: 'Ideal para resúmenes, ideas, correos, guiones y aprendizaje guiado.' },
+  { title: 'Para análisis profundo', tool: 'Claude', description: 'Muy útil para revisar documentos largos, comparar opciones y crear estrategias.' },
+  { title: 'Para crear imágenes', tool: 'Midjourney', description: 'Una opción potente para marcas, miniaturas, anuncios y creatividad visual.' },
+  { title: 'Para programar', tool: 'GitHub Copilot', description: 'Ayuda a escribir código, corregir errores y acelerar tareas técnicas.' },
+  { title: 'Para diseño rápido', tool: 'Canva IA', description: 'Perfecto para redes sociales, presentaciones, piezas comerciales y branding.' },
+];
+---
+
+<Layout
+  title="Mejores herramientas de IA para ganar tiempo y dinero en 2026"
+  description="Ranking práctico de herramientas de inteligencia artificial para escribir, vender, diseñar, programar, automatizar tareas y crear nuevos ingresos online."
+>
+  <Header />
+
+  <main class="bg-hub-bg">
+    <section class="py-16 bg-hub-dark text-white">
+      <div class="max-w-5xl mx-auto px-6">
+        <span class="inline-block text-sm font-semibold uppercase tracking-wider text-hub-grayLight mb-4">Ranking monetizable</span>
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">Mejores herramientas de IA para ganar tiempo y dinero</h1>
+        <p class="text-lg text-hub-grayLight max-w-3xl leading-relaxed">
+          Selección práctica de herramientas IA para crear contenido, automatizar tareas, mejorar negocios y lanzar servicios digitales con poca inversión inicial.
+        </p>
+        <p class="text-xs text-hub-grayLight mt-6 max-w-3xl">{affiliateDisclosure}</p>
+      </div>
+    </section>
+
+    <section class="py-12">
+      <div class="max-w-5xl mx-auto px-6 grid lg:grid-cols-3 gap-6">
+        {affiliateTools.map((tool) => (
+          <AffiliateBox tool={tool} />
+        ))}
+      </div>
+    </section>
+
+    <section class="py-14 bg-hub-white">
+      <div class="max-w-5xl mx-auto px-6">
+        <h2 class="text-3xl font-bold text-hub-dark mb-8">Qué herramienta elegir según tu objetivo</h2>
+        <div class="grid md:grid-cols-2 gap-5">
+          {useCases.map((item) => (
+            <div class="border border-hub-grayLighter rounded-xl p-6 bg-hub-bg">
+              <h3 class="text-xl font-bold text-hub-dark mb-2">{item.title}</h3>
+              <p class="text-sm text-hub-slate mb-3">Herramienta recomendada: <strong>{item.tool}</strong></p>
+              <p class="text-sm text-hub-slate leading-relaxed">{item.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="py-14 bg-hub-accent text-white">
+      <div class="max-w-4xl mx-auto px-6 text-center">
+        <h2 class="text-3xl font-bold mb-4">Empieza por una herramienta y crea un flujo rentable</h2>
+        <p class="text-hub-grayLight mb-8">
+          No necesitas usar veinte aplicaciones. Elige una herramienta principal, crea contenido o servicios concretos y mide qué convierte mejor.
+        </p>
+        <a href="/ia-para-ganar-dinero" class="inline-block px-6 py-3 bg-white text-hub-accent rounded-lg font-semibold hover:bg-hub-grayLighter">
+          Ver ideas para ganar dinero con IA
+        </a>
+      </div>
+    </section>
+  </main>
+</Layout>
