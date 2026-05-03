@@ -1,6 +1,6 @@
 ---
 import { affiliateDisclosure } from '../data/affiliateTools';
-const { tool } = Astro.props;
+const { tool, placement = 'affiliate_box' } = Astro.props;
 ---
 
 <div class="border border-hub-grayLighter rounded-xl p-6 bg-hub-bg">
@@ -9,7 +9,17 @@ const { tool } = Astro.props;
   <p class="text-sm mb-3"><strong>Precio:</strong> {tool.price}</p>
   <p class="text-sm mb-4"><strong>Valoración:</strong> {tool.rating} ⭐</p>
   
-  <a href={tool.affiliateUrl} target="_blank" rel="nofollow sponsored" class="inline-block px-5 py-3 bg-hub-accent text-white rounded-lg font-medium hover:bg-hub-accentLight">
+  <a
+    href={tool.affiliateUrl}
+    target="_blank"
+    rel={tool.isAffiliate ? 'nofollow sponsored' : 'nofollow noopener'}
+    data-affiliate-tool={tool.id}
+    data-affiliate-name={tool.name}
+    data-affiliate-placement={placement}
+    data-affiliate-program={tool.affiliateProgram}
+    data-affiliate-tracking-id={tool.trackingId}
+    class="inline-block px-5 py-3 bg-hub-accent text-white rounded-lg font-medium hover:bg-hub-accentLight"
+  >
     {tool.cta}
   </a>
 
